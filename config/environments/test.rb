@@ -28,6 +28,8 @@ Rails.application.configure do
 
   # DEVISE: Ensure you have defined default url options in your environments files
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # Letter opener
+  config.action_mailer.delivery_method = :letter_opener
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the

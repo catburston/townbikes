@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<ul class="hmenu">
+  <%= render '/shared/registration_items' %>
+  <%= render '/shared/login_items' %>
+</ul>
+
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>

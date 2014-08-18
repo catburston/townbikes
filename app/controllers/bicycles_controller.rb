@@ -13,7 +13,13 @@ class BicyclesController < ApplicationController
   end
 
   def create
-    @bicycle = Bicycle.create( bicycle_params )
+    @bicycle = Bicycle.new( bicycle_params )
+    @bicycle.user = current_user
+    if @bicycle.save
+      redirect_to bicycles_path, notice: 'Bicycle was successfully listed'
+    else
+      render :new
+    end
   end
 
   private

@@ -9,7 +9,8 @@
     Properties: <%= @bicycle.properties %><br />
     Description: <%= @bicycle.description %><br />
     User ID: <%= @bicycle.user_id %><br />
-    Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %>
+    Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %><br />
+    Location: <%= @user.location %>
   </li>
 </ul>
 <%= link_to "Back to Bicycles List", bicycles_path %>

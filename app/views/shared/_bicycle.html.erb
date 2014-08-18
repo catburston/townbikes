@@ -1,0 +1,16 @@
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+    <li> <%= error %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [ @bicycle ] do |f| %>
+  <%= f.label :manufacturer %> <%= f.text_field :manufacturer %><br />
+  <%= f.label :bicycle_type %> <%= f.text_field :bicycle_type %><br />
+  <%= f.label :size %> <%= f.text_field :size %><br />
+  <%= f.label :daily_cost %> <%= f.text_field :daily_cost %><br />
+  <%= f.label :description %> <%= f.text_area :description %><br />
+  <%= f.submit "Save", class: "save" %>
+<% end %>

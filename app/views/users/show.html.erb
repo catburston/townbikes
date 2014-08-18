@@ -1,7 +1,8 @@
 <h1>User</h1>
 
 <ul>
-    <li><%= @user.first_name %> <%= @user.last_name %></li>
+    <li>User Name: <%= @user.first_name %> <%= @user.last_name %></li>
+    <li>Location: <%= @user.location %></li>
     <ul>
       <% @bicycles.each do |bicycle| %>
         <li>
@@ -16,5 +17,5 @@
         </li>
       <% end %>
     </ul>
-
 </ul>
+<%= link_to "Back to Bicycles List", bicycles_path %>

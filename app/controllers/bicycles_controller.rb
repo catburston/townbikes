@@ -1,6 +1,10 @@
 class BicyclesController < ApplicationController
   def index
     @bicycles = Bicycle.all
+    @bicycles.each do |bicycle|
+      @user = bicycle.user
+    end
+
   end
 
   def show

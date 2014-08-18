@@ -7,5 +7,6 @@ FactoryGirl.define do
     b.size { Faker::Number.number(2) }
     b.daily_cost { Faker::Number.number(2) }
     b.description { Faker::Lorem.paragraph(2) }
+    b.user_id 1
   end
 end

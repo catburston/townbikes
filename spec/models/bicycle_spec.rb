@@ -15,5 +15,8 @@ describe Bicycle do
     it "is invalid without a daily cost" do
       FactoryGirl.build(:bicycle, daily_cost: nil).should_not be_valid
     end
+    it "is invalid without a user_id" do
+      FactoryGirl.build(:bicycle, user_id: nil).should_not be_valid
+    end
   end
 end

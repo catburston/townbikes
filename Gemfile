@@ -42,7 +42,7 @@ gem 'bcrypt',         '~> 3.1.7',   :require => 'bcrypt'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
 
   # Use byebug as debugger
   # gem 'byebug'

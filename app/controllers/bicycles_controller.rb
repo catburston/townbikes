@@ -20,7 +20,7 @@ class BicyclesController < ApplicationController
     @bicycle = Bicycle.new( bicycle_params )
     @bicycle.user = current_user
     if @bicycle.save
-      redirect_to bicycles_path, notice: 'Bicycle was successfully listed'
+      redirect_to user_bicycles_path, notice: 'Bicycle was successfully listed'
     else
       render :new
     end

@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for [ @reservation ] do |f| %>
+<%= form_for [ @user, @bicycle, @reservation ] do |f| %>
   <%= f.label :from_date %> <%= f.text_field :from_date %><br />
   <%= f.label :to_date %> <%= f.text_field :to_date %><br />
   <%= f.submit "Save", class: "save" %>

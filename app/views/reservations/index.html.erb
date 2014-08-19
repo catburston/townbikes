@@ -2,12 +2,15 @@
 <ul>
   <% @reservations.each do |reservation| %>
     <li>
-      <%= link_to "see more details", reservation_path(reservation.id) %><br />
+      <%= link_to "see more details", user_reservation_path(current_user.id, reservation.id) %><br />
+      Reservation ID: <%= reservation.id %><br />
       Bicycle ID: <%= reservation.bicycle_id %><br />
-      From Date: <%= @reservation.from_date %><br />
-      To Date: <%= @reservation.to_date %><br />
-      Bicycle Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %><br />
-      Location: <%= @user.location %>
+      From Date: <%= reservation.from_date %><br />
+      To Date: <%= reservation.to_date %><br />
+      Bicycle Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
+      Location: <%= @owner.location %>
     </li>
   <% end %>
 </ul>
+
+

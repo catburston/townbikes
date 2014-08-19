@@ -1,10 +1,11 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-if Rails.env == "development"
+if Rails.env == "development" || Rails.env == "test"
   puts "Cleaning DB first ..."
   User.destroy_all
   Bicycle.destroy_all
+  Reservation.destroy_all
 end
 
 BICYCLES = 50
@@ -43,4 +44,11 @@ User.all.to_a.each do |user, index|
 end
 
 puts "Creating Reservations"
-Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: bicycles.sample.id, user_id: u.id)
+5.times do
+  Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: bicycles.sample.id, user_id: (u.id+1))
+  Reservation.create!(from_date: Time.now + 22.days, to_date: Time.now + 24.days, bicycle_id: bicycles.sample.id, user_id: (u.id+3))
+  Reservation.create!(from_date: Time.now + 26.days, to_date: Time.now + 32.days, bicycle_id: bicycles.sample.id, user_id: (u.id+6))
+  Reservation.create!(from_date: Time.now + 20.days, to_date: Time.now + 21.days, bicycle_id: bicycles.sample.id, user_id: (u.id+7))
+  Reservation.create!(from_date: Time.now + 27.days, to_date: Time.now + 30.days, bicycle_id: bicycles.sample.id, user_id: (u.id+13))
+  Reservation.create!(from_date: Time.now + 29.days, to_date: Time.now + 33.days, bicycle_id: bicycles.sample.id, user_id: (u.id+15))
+end

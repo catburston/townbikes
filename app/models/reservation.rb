@@ -1,6 +1,6 @@
 class Reservation < ActiveRecord::Base
-  has_one :bicycle
-  has_one :user
+  belongs_to :bicycle
+  belongs_to :user
 
   validates :bicycle_id, presence: true
   validates :user_id, presence: true

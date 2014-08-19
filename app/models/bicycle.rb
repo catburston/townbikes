@@ -1,5 +1,6 @@
 class Bicycle < ActiveRecord::Base
   belongs_to :user
+  has_many :reservations
   # has_one :location, through: :user
   # setup hstore
   store_accessor  :properties

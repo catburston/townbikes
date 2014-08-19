@@ -1,7 +1,7 @@
 <%= form_for [ @reservation ] do |f| %>
   <%= f.label :from_date %> <%= f.date_select :from_date %><br />
   <%= f.label :to_date %> <%= f.date_select :to_date %><br />
-  <%= f.hidden_field :bicycle_id, value: params[:bicycle] %>
+  <%= f.hidden_field :bicycle_id, value: params[:reservation][:bicycle_id] %>
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.submit "Save", class: "save" %>
 <% end %>

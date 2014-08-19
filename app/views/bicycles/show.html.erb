@@ -11,7 +11,7 @@
     User ID: <%= @bicycle.user_id %><br />
     Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
     Location: <%= @owner.location %><br />
-    <%= link_to 'Reserve this Bicycle', new_reservation_path(bicycle: @bicycle.id) %>
+    <%= link_to 'Reserve this Bicycle', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ) %>
   </li>
 </ul>
 <%= link_to "Back to Bicycles List", bicycles_path %>

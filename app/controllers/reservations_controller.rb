@@ -16,14 +16,14 @@ class ReservationsController < ApplicationController
 
   def new
     @user = current_user
-    @bicycle = Bicycle.find(params[:bicycle])
+    @bicycle = Bicycle.find(reservation_params[:bicycle_id])
     @bicycle.reservations.build
     @reservation = Reservation.new
   end
 
   def create
     @user = current_user
-    @bicycle = Bicycle.find(params[:reservation][:bicycle_id])
+    @bicycle = Bicycle.find(reservation_params[:bicycle_id])
     @reservation = Reservation.new( reservation_params )
     if @reservation.save
       redirect_to action: :index, controller: :reservations, notice: 'Reservation was successfully created'

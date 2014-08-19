@@ -41,3 +41,6 @@ User.all.to_a.each do |user, index|
     user.bicycles << bicycles.sample
   end
 end
+
+puts "Creating Reservations"
+Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: bicycles.sample.id, user_id: u.id)

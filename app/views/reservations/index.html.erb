@@ -1,0 +1,13 @@
+<h1>Reservation History</h1>
+<ul>
+  <% @reservations.each do |reservation| %>
+    <li>
+      <%= link_to "see more details", reservation_path(reservation.id) %><br />
+      Bicycle ID: <%= reservation.bicycle_id %><br />
+      From Date: <%= @reservation.from_date %><br />
+      To Date: <%= @reservation.to_date %><br />
+      Bicycle Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %><br />
+      Location: <%= @user.location %>
+    </li>
+  <% end %>
+</ul>

@@ -9,6 +9,10 @@ end
 
 BICYCLES = 50
 
+manufacturers = ['Rivendell', 'Raleigh', 'Peugeot', 'gazelle', 'pedersen']
+bicycle_types = ['dutch - ladies', 'bakfiets', 'commuter', 'racer', 'MTB']
+sizes = [47, 52, 58, 60, 63, 66, 70]
+
 puts "Creating users ..."
 u = User.create!(first_name: "anna", email: "anna@example.com", password: "aaaa1234", description: "description", phone_number: "00000000", location: "Paris", confirmed_at: "2014-08-18 13:24:45.067996")
 User.create!(first_name: "bret", email: "bret@example.com", password: "aaaa1234", description: "description", phone_number: "00000000", location: "Paris", confirmed_at: "2014-08-18 13:24:45.067996")
@@ -28,7 +32,7 @@ User.create!(first_name: "owen", email: "owen@example.com", password: "aaaa1234"
 
 puts "Creating Bicycles ..."
 (1..BICYCLES).each do |index|
-  Bicycle.create!(manufacturer: "Bicycle #{index}", bicycle_type: "commuter", size: 55, daily_cost: 20, user_id: u.id)
+  Bicycle.create!(manufacturer: manufacturers.sample, bicycle_type: bicycle_types.sample, size: sizes.sample, daily_cost: 20, user_id: u.id)
 end
 
 bicycles = Bicycle.all.to_a

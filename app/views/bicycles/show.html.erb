@@ -10,7 +10,8 @@
     Description: <%= @bicycle.description %><br />
     User ID: <%= @bicycle.user_id %><br />
     Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %><br />
-    Location: <%= @user.location %>
+    Location: <%= @user.location %><br />
+    <%= link_to 'Reserve this Bicycle', reservation_path(@bicycle.id, @user.id) %>
   </li>
 </ul>
 <%= link_to "Back to Bicycles List", bicycles_path %>

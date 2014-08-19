@@ -13,5 +13,9 @@
       Location: <%= @owner.location %><br />
       Owner ID: <%= bicycle.user_id %>
     </li>
+    <% if bicycle.user_id == @user.id %>
+      <li><%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
+    <% end %>
+    <br /><br />
   <% end %>
 </ul>

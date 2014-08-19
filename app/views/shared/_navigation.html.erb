@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <li><%= link_to('List your Bicycle', new_user_bicycle_path(current_user.id)) %></li>
-  <li><%= link_to('My Reservations', user_reservations_path(current_user.id)) %></li>
+  <li><%= link_to('My Reservations', reservations_path) %></li>
 <% else %>
   <li><%= link_to('List your Bicycle', new_user_registration_path) %></li>
 <% end %>

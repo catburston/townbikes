@@ -9,13 +9,9 @@
     Properties: <%= @bicycle.properties %><br />
     Description: <%= @bicycle.description %><br />
     User ID: <%= @bicycle.user_id %><br />
-    Owner: <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user.id) %><br />
-    Location: <%= @user.location %><br />
-    <% if user_signed_in? %>
-      <%= link_to 'Reserve this Bicycle', new_user_bicycle_reservation_path(current_user.id, @bicycle.id) %>
-    <% else %>
-      <%= link_to('Reserve this Bicycle', new_user_session_path) %>
-    <% end %>
+    Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
+    Location: <%= @owner.location %><br />
+    <%= link_to 'Reserve this Bicycle', new_reservation_path(bicycle: @bicycle.id) %>
   </li>
 </ul>
 <%= link_to "Back to Bicycles List", bicycles_path %>

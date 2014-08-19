@@ -2,7 +2,7 @@
 <ul>
   <% @reservations.each do |reservation| %>
     <li>
-      <%= link_to "see more details", user_reservation_path(current_user.id, reservation.id) %><br />
+      <%= link_to "see more details", reservation_path(reservation.id) %><br />
       Reservation ID: <%= reservation.id %><br />
       Bicycle ID: <%= reservation.bicycle_id %><br />
       From Date: <%= reservation.from_date %><br />

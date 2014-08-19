@@ -1,15 +1,16 @@
 class BicyclesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
   def index
     @bicycles = Bicycle.all
     @bicycles.each do |bicycle|
-      @user = bicycle.user
+    @owner = bicycle.user
     end
 
   end
 
   def show
     @bicycle = Bicycle.find(params[:id])
-    @user = @bicycle.user
+    @owner = @bicycle.user
   end
 
   def new

@@ -1,3 +1,5 @@
+
+
 <h1>Bicycles Index</h1>
 <ul>
   <% @bicycles.each do |bicycle| %>
@@ -10,7 +12,7 @@
       Cost per day: <%= bicycle.daily_cost %><br />
       Properties: <%= bicycle.properties %><br />
       Description: <%= bicycle.description %><br />
-      Location: <%= @user.location %>
+      Location: <%= @owner.location %>
     </li>
   <% end %>
 </ul>

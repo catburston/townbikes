@@ -12,5 +12,16 @@
   <%= f.label :size %> <%= f.text_field :size %><br />
   <%= f.label :daily_cost %> <%= f.text_field :daily_cost %><br />
   <%= f.label :description %> <%= f.text_area :description %><br />
+  <%= f.label :properties %>
+
+  <ul>
+    <li><%= f.label :properties['helmet'] %> <%= f.check_box :properties['helmet'] %></li>
+    <li><%= f.label :front_basket %> <%= f.check_box :front_basket %></li>
+    <li><%= f.label :rear_basket %> <%= f.check_box :rear_basket %></li>
+    <li><%= f.label :trailer %> <%= f.check_box :trailer %></li>
+    <li><%= f.label :internal_gears %> <%= f.check_box :internal_gears %></li>
+    <li><%= f.label :child_seat %> <%= p.check_box :child_seat %></li>
+  </ul>
+
   <%= f.submit "Save", class: "save" %>
 <% end %>

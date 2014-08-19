@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
-  <li><%= link_to('List your Bicycle', new_user_bicycle_path(current_user.id)) %></li>
-  <li><%= link_to('My Reservations', reservations_path) %></li>
+  <li><%= link_to 'List your Bicycle', new_user_bicycle_path(@user.id) %></li>
+  <li><%= link_to 'My Reservations', reservations_path %></li>
+  <%= link_to 'My Bicycles', bicycles_path(:user_id => @user.id) %>
 <% else %>
-  <li><%= link_to('List your Bicycle', new_user_registration_path) %></li>
+  <li><%= link_to 'List your Bicycle', new_user_registration_path %></li>
 <% end %>
-<li><%= link_to('Find a Bicycle', bicycles_path) %></li>
+<li><%= link_to'Find a Bicycle', bicycles_path %></li>

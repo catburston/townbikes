@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   before_filter :authenticate_user!
   def index
+    @user = current_user
     @reservations = Reservation.all
     @reservations.each do |reservation|
       @bicycle = Bicycle.find(reservation.bicycle_id)
@@ -9,6 +10,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @reservation = Reservation.find(params[:id])
     @bicycle = Bicycle.find(@reservation.bicycle_id)
     @owner = User.find(@bicycle.user_id)

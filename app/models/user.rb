@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many  :bicycles
   has_many  :reservations
-  has_one   :location
+  has_many   :locations
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,

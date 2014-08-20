@@ -70,5 +70,6 @@ class BicyclesController < ApplicationController
 
   def filtering_params(params)
     params.slice(:user_bicycles)
+    # params.slice(:not_user_bicycles)
   end
 end

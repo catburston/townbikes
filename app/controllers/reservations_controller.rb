@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
     @reservations.each do |reservation|
       @bicycle = reservation.bicycle
       @owner = reservation.user
-      # @location = reservation.location
+      # @location = reservation.location # doesn't work for the index view??
     end
   end
 

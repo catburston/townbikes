@@ -1,11 +1,13 @@
 class ReservationsController < ApplicationController
   before_filter :authenticate_user!
+
   def index
     @user = current_user
     @reservations = Reservation.all
     @reservations.each do |reservation|
-      @bicycle = Bicycle.find(reservation.bicycle_id)
-      @owner = User.find(@bicycle.user_id)
+      @bicycle = reservation.bicycle
+      @owner = reservation.user
+      # @location = reservation.location
     end
   end
 
@@ -13,7 +15,8 @@ class ReservationsController < ApplicationController
     @user = current_user
     @reservation = Reservation.find(params[:id])
     @bicycle = Bicycle.find(@reservation.bicycle_id)
-    @owner = User.find(@bicycle.user_id)
+    @owner = User.find_by(:id => @bicycle.user_id)
+    @location = Location.find_by(:user_id => @owner.id)
   end
 
   def new

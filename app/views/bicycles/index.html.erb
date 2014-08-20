@@ -10,10 +10,10 @@
       Cost per day: <%= bicycle.daily_cost %><br />
       Properties: <%= bicycle.properties %><br />
       Description: <%= bicycle.description %><br />
-      Location: <%= @owner.location %><br />
+      Location: <%= @location.city %><br />
       Owner ID: <%= bicycle.user_id %>
     </li>
-    <% if bicycle.user_id == @user.id %>
+    <% if user_signed_in? && bicycle.user_id == @user.id %>
       <li><%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
     <% end %>
     <br /><br />

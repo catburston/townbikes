@@ -4,8 +4,9 @@ class BicyclesController < ApplicationController
   def index
     @bicycles = Bicycle.all
     @bicycles.each do |bicycle|
-    @owner = bicycle.user
-    @user = current_user
+      @owner = bicycle.user
+      @user = current_user
+      @location = Location.find_by(:user_id => @owner.id)
     end
 
     if params[:user_id]
@@ -17,6 +18,7 @@ class BicyclesController < ApplicationController
     @user = current_user
     @bicycle = Bicycle.find(params[:id])
     @owner = @bicycle.user
+    @location = Location.find_by(:user_id => @owner.id)
   end
 
   def new

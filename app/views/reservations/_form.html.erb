@@ -1,6 +1,6 @@
 <%= form_for [ @reservation ] do |f| %>
-  <%= f.label :from_date %> <%= f.date_select :from_date %><br />
-  <%= f.label :to_date %> <%= f.date_select :to_date %><br />
+  <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today %><br />
+  <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %><br />
   <%= f.hidden_field :bicycle_id, value: params[:reservation][:bicycle_id] %>
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.submit "Save", class: "save" %>

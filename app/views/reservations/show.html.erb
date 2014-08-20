@@ -5,8 +5,8 @@
     Bicycle ID: <%= link_to "#{@reservation.bicycle_id}", bicycle_path(@bicycle.id) %><br />
     From Date: <%= @reservation.from_date %><br />
     To Date: <%= @reservation.to_date %><br />
-    Bicycle Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
-    Location: <%= @owner.location %><br />
+    Bicycle Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %> <%= @owner.id %><br />
+    Location: <%= @location.city %><br />
   </li>
 </ul>
 <%= link_to "Back to Reservation History", reservations_path %>

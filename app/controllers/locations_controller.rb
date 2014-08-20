@@ -33,18 +33,18 @@ class LocationsController < ApplicationController
 
   def edit
     @user = current_user
-    @location = Locaiton.find(params[:id])
+    @location = Location.find(params[:id])
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    location = @user.locations.find(params[:id]).destroy
+    @user = User.find(current_user)
+    location = @user.location.find(params[:id]).destroy
     redirect_to action: 'index'
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @location = @user.locations.find(params[:id])
+    @user = User.find(current_user)
+    @location = @user.location.find(params[:id])
     if @location.update_attributes location_params
       redirect_to location_path(@location.id), notice: 'Location successfully updated'
     else

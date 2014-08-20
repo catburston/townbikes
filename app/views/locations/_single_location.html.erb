@@ -17,7 +17,7 @@
   });
 
   function displayOnMap(position){
-    var markers = handler.addMarkers(#{raw Location.markers(location)});
+    var markers = handler.addMarkers(<%= raw Location.markers(locations) %>);
     handler.map.centerOn(markers[0]);
   };
 

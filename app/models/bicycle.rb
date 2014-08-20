@@ -4,9 +4,6 @@ class Bicycle < ActiveRecord::Base
   # has_one :location, through: :user
   # setup hstore
   store_accessor  :properties
-  attr_accessor  :manufacturer, :bicycle_type, :size, :daily_cost, :description, :properties
-  # serialize :properties , ActiveRecord::Coders::Hstore
-  serialize :properties, Hash
 
   validates       :bicycle_type, presence: true
   validates       :size, presence: true

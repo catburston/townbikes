@@ -1,0 +1,19 @@
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+    <li> <%= error.message %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@user, @location] do |f| %>
+  <%= f.label :street_name %> <%= f.text_field :manufacturer %><br />
+  <%= f.label :suburb %> <%= f.text_field :suburb %><br />
+  <%= f.label :post_code %> <%= f.text_field :post_code %><br />
+  <%= f.label :city %> <%= f.text_field :city %><br />
+  <%= f.label :state %> <%= f.text_area :state %><br />
+  <%= f.label :country %> <%= f.text_area :country %><br />
+  <%= f.hidden_field :user_id, value: @user.id %>
+
+  <%= f.submit "Save", class: "save" %>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="map">
+  Map of
+  <% locations.each do |location| %>
+    <span class="location-address">
+      <%= location.result || location.address || location.search %>
+    </span>
+  <% end %>
+  <div style="width: 800px;">
+    <div id="multi_markers" style="width: 800px; height: 600px;"></div>
+  </div>
+</div>
+<script>
+
+  var multiHandler = Gmaps.build('Google');
+
+  multiHandler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+    var markers = multiHandler.addMarkers(#{raw Location.markers(locations)});
+    multiHandler.bounds.extendWith(markers);
+    multiHandler.fitMapToBounds();
+  });
+
+</script>

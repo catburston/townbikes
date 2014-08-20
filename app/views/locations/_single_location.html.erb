@@ -1,0 +1,24 @@
+<div class="map">
+  Map of
+  <span class="location-address">
+    <%= location.result || location.address || location.search %>
+  </span>
+  <div style="width: 800px;">
+    <div id="geolocation" style="width: 800px; height: 600px;"></div>
+  </div>
+</div>
+<script>
+
+  var handler = Gmaps.build('Google');
+
+  handler.buildMap({ internal: {id: 'geolocation'} }, function(){
+    if(navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(displayOnMap);
+  });
+
+  function displayOnMap(position){
+    var markers = handler.addMarkers(#{raw Location.markers(location)});
+    handler.map.centerOn(markers[0]);
+  };
+
+</script>

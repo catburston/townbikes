@@ -2,6 +2,7 @@
   <li><%= link_to 'List your Bicycle', new_user_bicycle_path(@user.id) %></li>
   <li><%= link_to 'My Reservations', reservations_path %></li>
   <li><%= link_to 'My Bicycles', bicycles_path(:user_id => @user.id) %></li>
+  <li><%= link_to 'Locations', locations_path %></li>
 <% else %>
   <li><%= link_to 'List your Bicycle', new_user_registration_path %></li>
 <% end %>

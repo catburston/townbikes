@@ -49,11 +49,10 @@ class BicyclesController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @bicycle = @user.bicycles.find(params[:id])
-    if @bicycle.update_attributes(bicycle_params)
-        redirect_to action: 'show', id: @bicycle.id
-        flash[:notice] = "bicycle updated!"
+    if @bicycle.update_attributes bicycle_params
+        redirect_to bicycle_path(@bicycle.id), notice: 'Bicycle was successfully updated'
     else
-        @errors = @bicycle.errors.full_messages
+        # @errors = @bicycle.errors.full_messages
         render 'edit'
     end
   end

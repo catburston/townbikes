@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for [ @bicycle ] do |f| %>
+<%= form_for [@user, @bicycle] do |f| %>
   <%= f.label :manufacturer %> <%= f.text_field :manufacturer %><br />
   <%= f.label :bicycle_type %> <%= f.text_field :bicycle_type %><br />
   <%= f.label :size %> <%= f.text_field :size %><br />
@@ -14,14 +14,15 @@
   <%= f.label :description %> <%= f.text_area :description %><br />
   <%= f.label :properties %>
 
-  <ul>
-    <li><%= f.label :properties['helmet'] %> <%= f.check_box :properties['helmet'] %></li>
-    <li><%= f.label :front_basket %> <%= f.check_box :front_basket %></li>
-    <li><%= f.label :rear_basket %> <%= f.check_box :rear_basket %></li>
-    <li><%= f.label :trailer %> <%= f.check_box :trailer %></li>
-    <li><%= f.label :internal_gears %> <%= f.check_box :internal_gears %></li>
-    <li><%= f.label :child_seat %> <%= p.check_box :child_seat %></li>
-  </ul>
+  <%= f.fields_for :properties do |p| %>
+    <%= p.label :helmet %> <%= p.check_box :helmet %>
+    <%= p.label :front_basket %> <%= p.check_box :front_basket %>
+    <%= p.label :rear_basket %> <%= p.check_box :rear_basket %>
+    <%= p.label :trailer %> <%= p.check_box :trailer %>
+    <%= p.label :internal_gears %> <%= p.check_box :internal_gears %>
+    <%= p.label :child_seat %> <%= p.check_box :child_seat %>
+  <% end %>
+  <%= f.hidden_field :user_id, value: @user.id %>
 
   <%= f.submit "Save", class: "save" %>
 <% end %>

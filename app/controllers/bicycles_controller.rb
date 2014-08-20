@@ -26,10 +26,10 @@ class BicyclesController < ApplicationController
 
   def create
     @user = current_user
-    @bicycle = Bicycle.new( bicycle_params )
+    @bicycle = Bicycle.new bicycle_params
     @bicycle.user = current_user
     if @bicycle.save
-      redirect_to bicycles_path(:user_id => @user.id), notice: 'Bicycle was successfully listed'
+      redirect_to bicycle_path(@bicycle.id), notice: 'Bicycle was successfully listed'
     else
       render :new
     end

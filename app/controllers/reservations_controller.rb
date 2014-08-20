@@ -3,12 +3,7 @@ class ReservationsController < ApplicationController
 
   def index
     @user = current_user
-    @reservations = Reservation.all
-    @reservations.each do |reservation|
-      @bicycle = reservation.bicycle
-      @owner = reservation.user
-      # @location = reservation.location # doesn't work for the index view??
-    end
+    @reservations = Reservation.where(:user_id => current_user.id)
   end
 
   def show

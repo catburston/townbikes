@@ -12,6 +12,7 @@ env:
 #     - rvm: ruby-1.9.3
 
 before_script:
+  - psql -c 'create database townbikes002_development;' -U postgres
   - psql -c 'create extension hstore;' -U postgres -d townbikes002_development
   - "bundle exec rake db:migrate"
   - "bundle exec rake db:test:prepare"

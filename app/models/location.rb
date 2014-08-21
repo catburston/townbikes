@@ -30,7 +30,7 @@ class Location < ActiveRecord::Base
   end
 
   def self.search(query)
-    near_by_locations = Location.near('%#{query}%', 10)
+    near_by_locations = Location.near("%#{query}%", 100)
   end
 
   private

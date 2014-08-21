@@ -7,6 +7,8 @@ class LocationsController < ApplicationController
 
     if params[:user_id]
       @locations = Location.where(:user_id => params[:user_id])
+    elsif params[:search]
+      @locations = Location.search(params[:search]).order('street_name DESC')
     end
   end
 

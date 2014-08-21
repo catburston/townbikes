@@ -29,6 +29,10 @@ class Location < ActiveRecord::Base
     end.to_json
   end
 
+  def self.search(query)
+    near_by_locations = Location.near('%#{query}%', 10)
+  end
+
   private
 
   def full_street_address

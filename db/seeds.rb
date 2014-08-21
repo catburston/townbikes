@@ -44,13 +44,9 @@ User.all.to_a.each do |user, index|
 end
 
 puts "Creating Reservations"
-5.times do
-  Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: bicycles.sample.id, user_id: (u.id+1))
-  Reservation.create!(from_date: Time.now + 22.days, to_date: Time.now + 24.days, bicycle_id: bicycles.sample.id, user_id: (u.id+3))
-  Reservation.create!(from_date: Time.now + 26.days, to_date: Time.now + 32.days, bicycle_id: bicycles.sample.id, user_id: (u.id+6))
-  Reservation.create!(from_date: Time.now + 20.days, to_date: Time.now + 21.days, bicycle_id: bicycles.sample.id, user_id: (u.id+7))
-  Reservation.create!(from_date: Time.now + 27.days, to_date: Time.now + 30.days, bicycle_id: bicycles.sample.id, user_id: (u.id+13))
-  Reservation.create!(from_date: Time.now + 29.days, to_date: Time.now + 33.days, bicycle_id: bicycles.sample.id, user_id: (u.id+15))
+users = User.all.to_a
+bicycles.each do |b|
+  Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: b.id, user_id: users.sample.id)
 end
 
 puts "Creating Locations"  # Always create seeds with lat & long & result to not cause API calls!

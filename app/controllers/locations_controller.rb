@@ -3,12 +3,13 @@ class LocationsController < ApplicationController
 
   def index
     @user = current_user
-    @locations = Location.where(id: params[:ids])
 
     if params[:user_id]
       @locations = Location.where(:user_id => params[:user_id])
     elsif params[:search]
       @locations = Location.search(params[:search])
+    else
+      @locations = Location.all
     end
   end
 

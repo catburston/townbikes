@@ -1,5 +1,5 @@
 <div class="map">
-  Map of
+  Map of Location
   <span class="location-address">
     <%= location.result || location.address || location.search %>
   </span>
@@ -12,13 +12,8 @@
   var handler = Gmaps.build('Google');
 
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
-    if(navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(displayOnMap);
+    var marker = handler.addMarkers(<%= raw Location.markers(location) %>);
+    handler.map.centerOn(marker[0]);
   });
-
-  function displayOnMap(position){
-    var markers = handler.addMarkers(<%= raw Location.markers(locations) %>);
-    handler.map.centerOn(markers[0]);
-  };
 
 </script>

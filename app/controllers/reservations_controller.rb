@@ -3,9 +3,14 @@ class ReservationsController < ApplicationController
 
   def index
     @user = current_user
-    @user_reservations = Reservation.where(:user_id => current_user.id)
     if params[:status].present?
+      @user_reservations = Reservation.where(:user_id => current_user.id)
       @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
+    elsif params[:bicycle_id].present?
+      # @user_reservations2 = Reservation.all.select { |reservation| reservation.bicycle_id == params[:bicycle_id] }
+      @user_reservations = Reservation.where(bicycle_id: params[:bicycle_id])
+    else
+      @user_reservations = Reservation.where(:user_id => current_user.id)
     end
   end
 

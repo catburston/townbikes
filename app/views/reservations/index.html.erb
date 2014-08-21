@@ -1,7 +1,7 @@
 <h1>Reservation History</h1>
 
 <p>
-  Show only reservations in the status:
+  Filter reservations in the status:
   <%= link_to 'pending', reservations_path({status: "pending"}) %>
   <%= link_to 'approved', reservations_path({status: "approved"})  %>
   <%= link_to 'rejected', reservations_path({status: "rejected"})  %>

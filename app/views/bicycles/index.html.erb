@@ -15,6 +15,7 @@
     </li>
     <% if user_signed_in? && bicycle.user_id == @user.id %>
       <li><%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
+      <li><%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => bicycle.id) %></li>
     <% end %>
     <br /><br />
   <% end %>

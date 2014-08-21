@@ -25,6 +25,7 @@ class Location < ActiveRecord::Base
       marker.lat          location.latitude
       marker.lng          location.longitude
       marker.title        "Location HERE"
+      marker.locid        location.id
       marker.infowindow   location.result || location.address || location.search
     end.to_json
   end

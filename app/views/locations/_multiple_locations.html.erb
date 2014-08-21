@@ -17,7 +17,7 @@
   var multiHandler = Gmaps.build('Google');
 
   multiHandler.buildMap({ internal: {id: 'multi_markers'}}, function(){
-    var markers = multiHandler.addMarkers(<%= raw Location.markers(locations) %>);
+    var markers = multiHandler.addMarkers(<%= raw Location.markers(locations) %> <%= raw(link_to location_path(locid)) %>);
     multiHandler.bounds.extendWith(markers);
     multiHandler.fitMapToBounds();
   });

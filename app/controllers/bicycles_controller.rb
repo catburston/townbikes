@@ -4,8 +4,8 @@ class BicyclesController < ApplicationController
   def index
     @user = current_user
 
-    if params[:user_ids]
-      @bicycles = Bicycle.where(:user_id => params[:user_id])
+    if params[:user_id].present?
+      @bicycles = Bicycle.where(:user_id => current_user.id)
     else
       @bicycles = Bicycle.all
     end

@@ -24,6 +24,8 @@ Rails.application.configure do
 
   # DEVISE: Ensure you have defined default url options in your environments files
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # Letter opener
+  config.action_mailer.delivery_method = :letter_opener
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

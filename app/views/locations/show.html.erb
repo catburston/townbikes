@@ -1,0 +1,8 @@
+<% if @location.blank? %>
+  <div>
+    Location not found
+    <%= link_to "locations?ids[]=1&ids[]=2&ids[]=3", locations_path(ids: [1,2,3]) %>
+  </div>
+<% else %>
+  <%= render 'single_location', location: @location %>
+<% end %>

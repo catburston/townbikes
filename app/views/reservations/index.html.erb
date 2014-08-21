@@ -1,0 +1,24 @@
+<h1>Reservation History</h1>
+
+<p>
+  Filter reservations in the status:
+  <%= link_to 'pending', reservations_path({status: "pending"}) %>
+  <%= link_to 'approved', reservations_path({status: "approved"})  %>
+  <%= link_to 'rejected', reservations_path({status: "rejected"})  %>
+  or <%= link_to 'show all reservations', reservations_path %>
+<p>
+
+<ul>
+  <% @user_reservations.each do |reservation| %>
+    <li>
+      <%= link_to "see more details", reservation_path(reservation.id) %><br />
+      Reservation ID: <%= reservation.id %><br />
+      Bicycle ID: <%= reservation.bicycle_id %><br />
+      From Date: <%= reservation.from_date %><br />
+      To Date: <%= reservation.to_date %><br />
+      Status: <%= reservation.status %><br />
+      Bicycle Owner: <%= link_to "#{reservation.bicycle.user.first_name} #{reservation.bicycle.user.last_name}", user_path(reservation.bicycle.user.id) %> <%= reservation.bicycle.user.id %><br />
+      Location: <%= reservation.bicycle.location.city %>
+    </li>
+  <% end %>
+</ul>

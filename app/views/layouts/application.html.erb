@@ -3,13 +3,25 @@
 <head>
   <title>Townbikes002</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" %>
+  <%= javascript_include_tag "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<ul class="hmenu">
+  <%= render '/shared/navigation' %>
+  <%= render '/shared/registration_items' %>
+  <%= render '/shared/login_items' %>
+</ul>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
 <%= yield %>
 

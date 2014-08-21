@@ -11,15 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818080526) do
+ActiveRecord::Schema.define(version: 20140821122239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "bicycles", force: true do |t|
+    t.string   "manufacturer"
+    t.string   "bicycle_type"
+    t.integer  "size"
+    t.integer  "daily_cost"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.hstore   "properties"
+    t.integer  "user_id"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "street_name"
+    t.string   "suburb"
+    t.integer  "post_code"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "search"
+    t.string   "result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bicycle_id"
+    t.integer  "user_id"
+    t.string   "status",     default: "pending"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "location"
     t.text     "description"
     t.integer  "phone_number"
     t.datetime "created_at"

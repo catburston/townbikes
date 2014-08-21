@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to    :user
+  validates     :user_id, presence: true
 
   # instruct Geocoder gem which method returns your object's geocodable address:
   geocoded_by :full_street_address

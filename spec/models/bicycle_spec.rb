@@ -35,7 +35,7 @@ describe Bicycle do
     end
     it "should add the bike to the reservation" do
       bike = FactoryGirl.create(:bicycle, user_id: @user.id)
-      @reservation = FactoryGirl.create(:reservation)
+      @reservation = FactoryGirl.create(:reservation, bicycle_id: bike.id)
       expect(bike.reservations.last).to eq @reservation
     end
   end

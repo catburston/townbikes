@@ -47,6 +47,7 @@ puts "Creating Reservations"
 users = User.all.to_a
 bicycles.each do |b|
   Reservation.create!(from_date: Time.now + 2.days, to_date: Time.now + 10.days, bicycle_id: b.id, user_id: users.sample.id)
+  Reservation.create!(from_date: Time.now + 20.days, to_date: Time.now + 24.days, bicycle_id: b.id, user_id: users.sample.id)
 end
 
 puts "Creating Locations"  # Always create seeds with lat & long & result to not cause API calls!

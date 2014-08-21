@@ -34,11 +34,7 @@ gem 'jquery-turbolinks'
 # ruby racer
 gem 'therubyracer',  '~> 0.12.0'
 
-<<<<<<< HEAD
-# validates_overlap prevents bicycle reservations overlapping
-=======
 # validates_overlap to prevent bicycle reservations overlapping
->>>>>>> 3ce28292925ad97bd9ce761c3e3f56eb47550ae3
 gem 'validates_overlap'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

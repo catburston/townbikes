@@ -3,7 +3,10 @@ class ReservationsController < ApplicationController
 
   def index
     @user = current_user
-    @reservations = Reservation.where(:user_id => current_user.id)
+    @user_reservations = Reservation.where(:user_id => current_user.id)
+    if params[:status].present?
+      @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
+    end
   end
 
   def show

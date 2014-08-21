@@ -1,5 +1,4 @@
-require 'spec_helper'
-require 'factory_girl_rails'
+require 'rails_helper'
 
 describe Bicycle do
   describe "when ensuring that the bicycle model is valid" do

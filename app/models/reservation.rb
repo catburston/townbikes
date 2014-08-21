@@ -7,6 +7,7 @@ class Reservation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :from_date, presence: true
   validates :to_date, presence: true
+
   validate :from_date_is_in_future
   validate :from_date_before_to_date
 

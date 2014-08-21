@@ -18,4 +18,25 @@ describe Bicycle do
       FactoryGirl.build(:bicycle, user_id: nil).should_not be_valid
     end
   end
+
+  describe "when ensuring that the bicycle model relationships are valid" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @location = FactoryGirl.create(:location, user_id: @user.id)
+    end
+
+    it "should add the bike to the user" do
+      bike = FactoryGirl.create(:bicycle, user_id: @user.id)
+      expect(bike.user).to eq @user
+    end
+    it "should add the bike to the users location" do
+      bike = FactoryGirl.create(:bicycle, user_id: @user.id)
+      expect(bike.location).to eq @location
+    end
+    it "should add the bike to the reservation" do
+      bike = FactoryGirl.create(:bicycle, user_id: @user.id)
+      @reservation = FactoryGirl.create(:reservation)
+      expect(bike.reservations.last).to eq @reservation
+    end
+  end
 end

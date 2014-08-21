@@ -9,8 +9,8 @@ FactoryGirl.define do
     l.country { Faker::Address.country }
     l.latitude { Faker::Address.latitude }
     l.longitude { Faker::Address.longitude }
-    l.search { b.street_address + ', ' + b.country }
-    l.result { b.street_address + ', ' + b.post_code + ', ' + b.city + ', ' + b.country }
-    # l.user_id 1
+    # l.search { l.street_address + ', ' + l.country }
+    # l.result { l.street_address + ', ' + l.post_code + ', ' + l.city + ', ' + l.country }
+    l.user { FactoryGirl.create(:user) }
   end
 end

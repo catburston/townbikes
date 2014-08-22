@@ -6,18 +6,31 @@
   </ul>
 <% end %>
 
-<%= form_for [ @reservation ] do |f| %>
-  <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today %><br />
-  <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %><br />
-  <p>Reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
-  <p>@user.id: <%= @user.id %></p>
-  <%= f.label :status, 'Status: ' %> <%= @reservation.status %><br />
-  <% if @user.id == @reservation.bicycle.user.id %>
-    <%= f.label :status %><br />
-    <%= f.label :status_approved, 'Approve:' %> <%= f.radio_button :status, "approved" %><br />
-    <%= f.label :status_rejected, 'Reject:' %> <%= f.radio_button :status, "rejected" %><br />
+<% if @user.id == @reservation.bicycle.user.id %>
+
+  <%= form_for [ @reservation ] do |f| %>
+    <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today, :disabled=>true %><br />
+    <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today, :disabled=>true %><br />
+    <p>Reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
+    <p>@user.id: <%= @user.id %></p>
+    <%= f.label :status, 'Status: ' %> <%= @reservation.status %><br />
+      <%= f.label :status %><br />
+      <%= f.label :status_approved, 'Approve:' %> <%= f.radio_button :status, "approved" %><br />
+      <%= f.label :status_rejected, 'Reject:' %> <%= f.radio_button :status, "rejected" %><br />
+    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit "Save", class: "save" %>
   <% end %>
-  <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-  <%= f.submit "Save", class: "save" %>
+
+<% else %>
+
+  <%= form_for [ @reservation ] do |f| %>
+    <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today %><br />
+    <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %><br />
+    <p>Reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
+    <p>@user.id: <%= @user.id %></p>
+    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit "Save", class: "save" %>
+  <% end %>
 <% end %>

@@ -1,3 +1,6 @@
+require 'carrierwave/processing/mini_magick'
+require 'file_size_validator'
+
 class Bicycle < ActiveRecord::Base
   mount_uploader :photo, BicyclePhotosUploader
 
@@ -11,6 +14,7 @@ class Bicycle < ActiveRecord::Base
   validates       :size, presence: true
   validates       :daily_cost, presence: true
   validates       :user_id, presence: true
+  validates       :photo, :file_size => { :maximum => 0.5.megabytes.to_i }
 
   scope :user_bicycles, -> (bicycle) { where user_id: current_user.id }
 

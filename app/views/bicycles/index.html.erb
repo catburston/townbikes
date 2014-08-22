@@ -11,7 +11,8 @@
       Properties: <%= bicycle.properties %><br />
       Description: <%= bicycle.description %><br />
       Location: <%= bicycle.location.city %><br />
-      Owner ID: <%= bicycle.user.id %> <%= bicycle.user.first_name %>
+      Owner ID: <%= bicycle.user.id %> <%= bicycle.user.first_name %><br />
+      Photo: <%= image_tag(bicycle.photo_url) if bicycle.photo? %>
     </li>
     <% if user_signed_in? && bicycle.user_id == @user.id %>
       <li><%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>

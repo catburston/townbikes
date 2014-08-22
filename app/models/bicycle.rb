@@ -1,4 +1,6 @@
 class Bicycle < ActiveRecord::Base
+  mount_uploader :photo, BicyclePhotosUploader
+
   belongs_to  :user
   has_many    :reservations
   has_one     :location, through: :user
@@ -11,5 +13,6 @@ class Bicycle < ActiveRecord::Base
   validates       :user_id, presence: true
 
   scope :user_bicycles, -> (bicycle) { where user_id: current_user.id }
+
 
 end

@@ -8,7 +8,7 @@
   or <%= link_to 'show all reservations', reservations_path %>
 <p>
 
-<ul>
+<ul class="small-block-grid-3">
   <% @user_reservations.each do |reservation| %>
     <li>
       <%= link_to "see more details", reservation_path(reservation.id) %><br />
@@ -18,10 +18,10 @@
       To Date: <%= reservation.to_date %><br />
       Status: <%= reservation.status %><br />
       Bicycle Owner: <%= link_to "#{reservation.bicycle.user.first_name} #{reservation.bicycle.user.last_name}", user_path(reservation.bicycle.user.id) %> <%= reservation.bicycle.user.id %><br />
-      Location: <%= reservation.bicycle.location.city %>
+      Location: <%= reservation.bicycle.location.city %><br />
+      <% if user_signed_in? && reservation.bicycle.user_id == @user.id %>
+        <%= link_to "Edit this Reservation", edit_reservation_path(reservation.id, :bicycle_id => reservation.bicycle.id) %><br />
+      <% end %>
     </li>
-    <% if user_signed_in? && reservation.bicycle.user_id == @user.id %>
-      <li><%= link_to "Edit this Reservation", edit_reservation_path(reservation.id, :bicycle_id => reservation.bicycle.id) %></li>
-    <% end %>
   <% end %>
 </ul>

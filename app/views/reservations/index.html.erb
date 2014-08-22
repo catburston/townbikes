@@ -20,5 +20,8 @@
       Bicycle Owner: <%= link_to "#{reservation.bicycle.user.first_name} #{reservation.bicycle.user.last_name}", user_path(reservation.bicycle.user.id) %> <%= reservation.bicycle.user.id %><br />
       Location: <%= reservation.bicycle.location.city %>
     </li>
+    <% if user_signed_in? && reservation.bicycle.user_id == @user.id %>
+      <li><%= link_to "Edit this Reservation", edit_reservation_path(reservation.id, :bicycle_id => reservation.bicycle.id) %></li>
+    <% end %>
   <% end %>
 </ul>

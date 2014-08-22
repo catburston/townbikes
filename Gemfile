@@ -33,6 +33,8 @@ gem 'gmaps4rails'
 gem 'jquery-turbolinks'
 # ruby racer
 gem 'therubyracer',  '~> 0.12.0'
+# carrierwave for photo storage
+gem 'carrierwave'
 
 # validates_overlap to prevent bicycle reservations overlapping
 gem 'validates_overlap'

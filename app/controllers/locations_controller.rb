@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   # before_filter :authenticate_user!, except: [:index, :show]
+  helper_method :view_context
 
   def index
     @user = current_user

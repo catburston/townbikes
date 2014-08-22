@@ -14,7 +14,7 @@ class Bicycle < ActiveRecord::Base
   validates       :size, presence: true
   validates       :daily_cost, presence: true
   validates       :user_id, presence: true
-  validates       :photo, :file_size => { :maximum => 0.5.megabytes.to_i }
+  validates       :photo, :file_size => { :maximum => 1.megabytes.to_i }
 
   scope :user_bicycles, -> (bicycle) { where user_id: current_user.id }
 

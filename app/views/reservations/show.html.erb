@@ -1,13 +1,13 @@
 <h1>Reservation#show</h1>
 <ul>
   <li>
-    Reservation ID: <%= @user_reservations.id %><br />
-    Bicycle ID: <%= link_to "#{@user_reservations.bicycle_id}", bicycle_path(@bicycle.id) %><br />
-    From Date: <%= @user_reservations.from_date %><br />
-    To Date: <%= @user_reservations.to_date %><br />
-    Status: <%= @user_reservations.status %><br />
+    Reservation ID: <%= @reservation.id %><br />
+    Bicycle ID: <%= link_to "#{@reservation.bicycle_id}", bicycle_path(@bicycle.id) %><br />
+    From Date: <%= @reservation.from_date %><br />
+    To Date: <%= @reservation.to_date %><br />
+    Status: <%= @reservation.status %><br />
     Bicycle Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %> <%= @owner.id %><br />
-    Location: <br />
+    Location: <%= @owner.location.city %><br />
   </li>
 </ul>
 <%= link_to "Back to Reservation History", reservations_path %>

@@ -1,7 +1,13 @@
 <%= form_for [ @reservation ] do |f| %>
   <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today %><br />
   <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %><br />
-  <%= f.hidden_field :bicycle_id, value: params[:reservation][:bicycle_id] %>
+  <p>@reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
+  <p>@user.id: <%= @user.id %></p>
+  <%= f.label :status %> <%= @reservation.status %><br />
+  <% if @user.id == @reservation.bicycle.user.id %>
+    <%= f.label :status %> <%= f.radio_button :status, "approve" %> <%= f.radio_button :status, "reject" %><br />
+  <% end %>
+  <%= f.hidden_field :bicycle_id, value: params[:bicycle_id] %>
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.submit "Save", class: "save" %>
 <% end %>

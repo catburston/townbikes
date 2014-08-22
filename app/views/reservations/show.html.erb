@@ -9,5 +9,6 @@
     Bicycle Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %> <%= @owner.id %><br />
     Location: <%= @owner.location.city %><br />
   </li>
+  <li><%= link_to "Edit this Reservation", edit_reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id) %></li>
 </ul>
 <%= link_to "Back to Reservation History", reservations_path %>

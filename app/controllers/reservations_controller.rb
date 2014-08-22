@@ -43,13 +43,13 @@ class ReservationsController < ApplicationController
 
   def edit
     @user = current_user
-    @bicycle = Bicycle.where(id: params[:bicycle_id])
+    @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
   end
 
   def update
     @user = current_user
-    @bicycle = Bicycle.where(id: params[:bicycle_id])
+    @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
     if @reservation.update_attributes( reservation_params )
       redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'

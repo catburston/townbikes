@@ -1,17 +1,26 @@
-<div class="map">
-  Map of Locations
-  <ul>
-    <% locations.each do |location| %>
-      <li><span class="location-address">
-        <%= location.result || location.address || location.search %>
-        <%= link_to "see more details", location_path(location.id) %>
-      </span></li>
-    <% end %>
-  </ul>
-  <div style="width: 800px;">
-    <div id="multi_markers" style="width: 800px; height: 600px;"></div>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="map">
+      <h1>Search results</h1>
+      <ul>
+        <% locations.each do |location| %>
+          <li><span class="location-address">
+            <%= location.result || location.address || location.search %>
+            <%= link_to "see more details", location_path(location.id) %>
+          </span></li>
+        <% end %>
+      </ul>
+      <div data-interchange="[../examples/interchange/default.html, (small)], [../examples/interchange/medium.html, (medium)], [../examples/interchange/large.html, (large)]">
+        <div data-alert class="alert-box secondary radius">
+          <div style="width: 800px;">
+            <div id="multi_markers" style="width: 800px; height: 600px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 <script>
 
   var multiHandler = Gmaps.build('Google');

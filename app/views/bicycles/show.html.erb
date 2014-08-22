@@ -1,6 +1,19 @@
-<h1>Bicycles Show</h1>
-<ul>
-  <li>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Bicycles Show</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="large-8 columns">
+    <div id="bicycle-show">
+        <% if @bicycle.photo? %>
+            <%= image_tag(@bicycle.photo_url) %>
+        <% end %>
+    </div>
+    <%= link_to "Back to Bicycles List", bicycles_path %>
+  </div>
+  <div class="large-4 columns">
+    Bicycle ID: <%= @bicycle.id %><br />
     Bicycle ID: <%= @bicycle.id %><br />
     Manufacturer: <%= @bicycle.manufacturer %><br />
     Type: <%= @bicycle.bicycle_type %><br />
@@ -10,8 +23,10 @@
     Description: <%= @bicycle.description %><br />
     User ID: <%= @bicycle.user_id %><br />
     Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
-    Photo: <%= image_tag(@bicycle.photo_url) if @bicycle.photo? %>
-    <%= link_to 'Reserve this Bicycle', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ) %>
-  </li>
-</ul>
-<%= link_to "Back to Bicycles List", bicycles_path %>
+    <% if @user.id != @bicycle.user.id %>
+        <%= link_to 'Reserve this Bicycle', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ) %>
+    <% elsif @user.id == @bicycle.user.id %>
+        <%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => @bicycle.id) %>
+    <% end %>
+  </div>
+</div>

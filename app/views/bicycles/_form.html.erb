@@ -22,7 +22,9 @@
     <%= p.label :internal_gears %> <%= p.check_box :internal_gears %>
     <%= p.label :child_seat %> <%= p.check_box :child_seat %>
   <% end %>
+  <br />
+  <%= f.label :photo %> <%= f.file_field :photo %>
+  <br />
   <%= f.hidden_field :user_id, value: @user.id %>
-
   <%= f.submit "Save", class: "save" %>
 <% end %>

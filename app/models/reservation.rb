@@ -11,7 +11,7 @@ class Reservation < ActiveRecord::Base
   validate :from_date_is_in_future
   validate :from_date_before_to_date
 
-  validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Some validation title", :message_content => "Some validation message", :exclude_edges => ["from_date", "to_date"]}
+  validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Some validation title", :message_content => "Some validation message", :exclude_edges => ["from_date", "to_date"]}, :on => :create
 
   #custom ActiveRecord validations
   private

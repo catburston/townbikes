@@ -45,6 +45,7 @@ class ReservationsController < ApplicationController
     @user = current_user
     @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
+    @location = Location.find_by(user_id: @user.id)
   end
 
   def update

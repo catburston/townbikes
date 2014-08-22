@@ -48,7 +48,7 @@ class LocationsController < ApplicationController
 
   def update
     @user = User.find(current_user)
-    @location = @user.location.find(params[:id])
+    @location = Location.find(params[:id])
     if @location.update_attributes location_params
       redirect_to location_path(@location.id), notice: 'Location successfully updated'
     else

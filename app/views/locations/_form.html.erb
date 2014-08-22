@@ -7,13 +7,87 @@
 <% end %>
 
 <%= form_for [@user, @location] do |f| %>
-  <%= f.label :street_name %> <%= f.text_field :street_name %><br />
-  <%= f.label :suburb %> <%= f.text_field :suburb %><br />
-  <%= f.label :post_code %> <%= f.text_field :post_code %><br />
-  <%= f.label :city %> <%= f.text_field :city %><br />
-  <%= f.label :state %> <%= f.text_field :state %><br />
-  <%= f.label :country %> <%= f.text_field :country %><br />
+  <div class="row">
+    <div class="large-6 columns">
+      <%= devise_error_messages! %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Street name and number</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :street_name %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Suburb</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :suburb %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Postcode</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :post_code %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">City</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">State</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :state %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">Country</span>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :country %>
+        </div>
+      </div>
+    </div>
+  </div>
   <%= f.hidden_field :user_id, value: @user.id %>
-
-  <%= f.submit "Save", class: "save" %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.submit "Save" %>
+    </div>
+  </div>
 <% end %>

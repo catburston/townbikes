@@ -1,4 +1,10 @@
-<%= form_tag(locations_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+<div class="row collapse">
+  <div class="large-8 small-9 columns">
+    <%= form_tag(locations_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+  </div>
+  <div class="large-4 small-3 columns">
+    <%= submit_tag "Search", :name => nil, class: "alert button expand" %>
+    <% end %>
+  </div>
+</div>

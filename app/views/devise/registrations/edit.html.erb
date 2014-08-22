@@ -1,8 +1,11 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= render 'form' %>
-
-<p><%= link_to  'Add a location to my profile', new_user_location_path(@user.id) %></p>
+<% if @user.location == nil %>
+<p><%= link_to 'Add a location to my profile', new_user_location_path(@user.id) %></p>
+<% else %>
+<p><%= link_to 'Edit the location of your bicycle(s)', edit_user_location_path(@user.id, @user.location.id) %></p>
+<% end %>
 
 <h3>Cancel my account</h3>
 

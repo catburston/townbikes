@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
   belongs_to    :user
   validates     :user_id, presence: true
+  include ApplicationHelper
 
   # instruct Geocoder gem which method returns your object's geocodable address:
   geocoded_by :full_street_address
@@ -23,7 +24,8 @@ class Location < ActiveRecord::Base
 
   def self.markers(locations)
     Gmaps4rails.build_markers(locations) do |location, marker|
-      loc_link = "<%= raw(link_to location_path(location.id)) %>"
+      # marker.innerHTML    "<%= raw(link_to(location_path(location.id)) %>"
+      # url location_path(location.id)
       marker.lat          location.latitude
       marker.lng          location.longitude
       marker.title        "Location HERE"
@@ -31,7 +33,8 @@ class Location < ActiveRecord::Base
       # marker.infowindow render_to_string(location.result + "<%= raw(link_to location_path(location.id)) %>" || location.address + "<%= raw(link_to location_path(location.id)) %>" || location.search + "<%= raw(link_to location_path(location.id)) %>")
 
       # marker.infowindow   location.result + "<%= raw(link_to location_path(location.id)) %>" || location.address + "<%= raw(link_to location_path(location.id)) %>" || location.search + "<%= raw(link_to location_path(location.id)) %>"
-      marker.infowindow   location.result + "#{loc_link}" || location.address || location.search
+      # marker.infowindow   (location.result || location.address || location.search) + link_to_home(location)
+      marker.infowindow   (location.result || location.address || location.search)
     end.to_json
   end
 

@@ -1,5 +1,5 @@
 <h1>Bicycles Index</h1>
-<ul>
+<ul class="small-block-grid-3">
   <% @bicycles.each do |bicycle| %>
     <li>
       <%= link_to "see more details", bicycle_path(bicycle.id) %><br />
@@ -11,12 +11,12 @@
       Properties: <%= bicycle.properties %><br />
       Description: <%= bicycle.description %><br />
       Location: <%= bicycle.location.city %><br />
-      Owner ID: <%= bicycle.user.id %> <%= bicycle.user.first_name %>
+      Owner ID: <%= bicycle.user.id %> <%= bicycle.user.first_name %><br />
+      Photo: <%= image_tag(bicycle.photo_url) if bicycle.photo? %><br />
+      <% if user_signed_in? && bicycle.user_id == @user.id %>
+        <%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %><br />
+        <%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => bicycle.id) %>
+      <% end %>
     </li>
-    <% if user_signed_in? && bicycle.user_id == @user.id %>
-      <li><%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
-      <li><%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => bicycle.id) %></li>
-    <% end %>
-    <br /><br />
   <% end %>
 </ul>

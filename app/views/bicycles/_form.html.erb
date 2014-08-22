@@ -7,22 +7,58 @@
 <% end %>
 
 <%= form_for [@user, @bicycle] do |f| %>
-  <%= f.label :manufacturer %> <%= f.text_field :manufacturer %><br />
-  <%= f.label :bicycle_type %> <%= f.text_field :bicycle_type %><br />
-  <%= f.label :size %> <%= f.text_field :size %><br />
-  <%= f.label :daily_cost %> <%= f.text_field :daily_cost %><br />
-  <%= f.label :description %> <%= f.text_area :description %><br />
-  <%= f.label :properties %>
-
-  <%= f.fields_for :properties do |p| %>
-    <%= p.label :helmet %> <%= p.check_box :helmet %>
-    <%= p.label :front_basket %> <%= p.check_box :front_basket %>
-    <%= p.label :rear_basket %> <%= p.check_box :rear_basket %>
-    <%= p.label :trailer %> <%= p.check_box :trailer %>
-    <%= p.label :internal_gears %> <%= p.check_box :internal_gears %>
-    <%= p.label :child_seat %> <%= p.check_box :child_seat %>
-  <% end %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-
-  <%= f.submit "Save", class: "save" %>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Manufacturer
+        <%= f.text_field :manufacturer %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Bicycle Type
+      <%= select(:bicycle, :bicycle_type, [['dutch', 1], ['mtb', 2], ['child', 3], ['commuter', 4]]) %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Bicycle Size
+      <%= f.text_field :size %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Bicycle Features</label>
+      <%= f.fields_for :properties do |p| %>
+        <%= p.check_box :helmet %><%= p.label :helmet %>
+        <%= p.check_box :front_basket %><%= p.label :front_basket %>
+        <%= p.check_box :rear_basket %><%= p.label :rear_basket %>
+        <%= p.check_box :trailer %><%= p.label :trailer %>
+        <%= p.check_box :internal_gears %><%= p.label :internal_gears %>
+        <%= p.check_box :child_seat %><%= p.label :child_seat %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Daily Cost
+        <%= f.text_field :daily_cost %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Upload a Photo
+        <%= f.file_field :photo %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit "Save", class: "button" %>
+    </div>
+  </div>
 <% end %>

@@ -64,7 +64,7 @@ class BicyclesController < ApplicationController
   private
 
   def bicycle_params
-    params.require(:bicycle).permit(:manufacturer, :bicycle_type, :size, :daily_cost, :description, :properties => [:helmet, :front_basket, :rear_basket, :trailer, :internal_gears, :child_seat])
+    params.require(:bicycle).permit(:manufacturer, :bicycle_type, :size, :daily_cost, :description, :photo, :properties => [:helmet, :front_basket, :rear_basket, :trailer, :internal_gears, :child_seat])
   end
 
   def filtering_params(params)

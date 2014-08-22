@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def index
     @user = current_user
@@ -41,9 +41,30 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @bicycle = Bicycle.find_by(id: params[:bicycle_id])
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    @bicycle = Bicycle.find_by(id: params[:bicycle_id])
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update_attributes( reservation_params )
+      redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'
+    else
+        # @errors = @reservation.errors.full_messages
+        render :edit, :bicycle_id => @reservation.bicycle.id
+    end
+  end
+
   private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :bicycle_id, :from_date, :to_date, :status)
+    params.require(:reservation).permit(:user_id, :bicycle_id, :from_date, :to_date, :status )
+  end
+  def reservation_update_params
+    params.require(:reservation).permit(:status)
   end
 end

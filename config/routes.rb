@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :bicycles, only: [:new, :create, :edit, :destroy, :update]
     resources :locations, only: [:new, :create, :edit, :destroy, :update]
   end
-  resources :reservations, only: [:index, :show, :new, :create]
+  resources :reservations, only: [:index, :show, :new, :create, :edit, :update]
   resources :bicycles, only: [:index, :show]
   resources :locations, only: [:index, :show]
 

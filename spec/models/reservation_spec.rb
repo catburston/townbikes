@@ -30,5 +30,9 @@ describe Reservation do
       @reservation = FactoryGirl.create(:reservation, bicycle_id: @bicycle.id)
       expect(@bicycle.reservations.last).to eq @reservation
     end
+    it "should add the user to the reservation" do
+      @reservation = FactoryGirl.create(:reservation, user_id: @user.id)
+      expect(@user.reservations.last).to eq @reservation
+    end
   end
 end

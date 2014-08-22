@@ -1,18 +1,21 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.3'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+
+# Foundation Gems
+gem 'compass-rails'
+gem 'foundation-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,6 +36,9 @@ gem 'gmaps4rails'
 gem 'jquery-turbolinks'
 # ruby racer
 gem 'therubyracer',  '~> 0.12.0'
+# carrierwave for photo storage
+gem 'carrierwave'
+gem 'mini_magick'
 
 # validates_overlap to prevent bicycle reservations overlapping
 gem 'validates_overlap'

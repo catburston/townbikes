@@ -49,7 +49,8 @@
           <!-- Right Nav Section -->
           <ul class="right">
             <li class="active"><%= link_to 'List your Bicycle', new_user_registration_path %></li>
-            <li><%= link_to('Login', new_user_session_path)  %></li>
+            <li><%= link_to 'Login', '#', :data => { :"reveal-id" => "loginModal" }  %></li>
+            <li><%= link_to 'Sign up', '#', :data => { :"reveal-id" => "signupModal" } %></li>
           </ul>
 
           <!-- Left Nav Section -->
@@ -61,3 +62,13 @@
     </nav>
   </div>
 <% end %>
+
+<div id="signupModal" class="reveal-modal" data-reveal>
+  <%= render "devise/registrations/register_form" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="loginModal" class="reveal-modal" data-reveal>
+  <%= render "devise/sessions/login" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

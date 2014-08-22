@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
 
  */
+#bicycle-show {
+  background: url('tandem-default-636.png') no-repeat;
+  height:425px;
+  width: 636px;
+}

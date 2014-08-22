@@ -6,31 +6,75 @@
   </ul>
 <% end %>
 
-<% if @user.id == @reservation.bicycle.user.id %>
+<% if @user.id == @bicycle.user.id %>
 
   <%= form_for [ @reservation ] do |f| %>
-    <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today, :disabled=>true %><br />
-    <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today, :disabled=>true %><br />
-    <p>Reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
-    <p>@user.id: <%= @user.id %></p>
-    <%= f.label :status, 'Status: ' %> <%= @reservation.status %><br />
-      <%= f.label :status %><br />
-      <%= f.label :status_approved, 'Approve:' %> <%= f.radio_button :status, "approved" %><br />
-      <%= f.label :status_rejected, 'Reject:' %> <%= f.radio_button :status, "rejected" %><br />
-    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <div class="row">
+      <div class="large-8 columns">
+        <label>From Date
+          <%= f.date_field :from_date, value: Date.today, min: Date.today, :disabled=>true %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+        <label>To Date
+          <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today, :disabled=>true %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+        <p>@bicycle.user.id: <%= @bicycle.user.id %></p>
+        <p>@user.id: <%= @user.id %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+        <label>Status</label>
+        <%= f.radio_button :status, "approved", :value=>'approved' %><label for="Approve">Approve</label>
+        <%= f.radio_button :status, "rejected", :value=>'rejected' %><label for="Reject">Reject</label>
+      </div>
+    </div>
+    <%= f.hidden_field :bicycle_id, value: @bicycle.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit "Save", class: "save" %>
+    <div class="row">
+      <div class="large-8 columns">
+        <%= f.submit "Save", class: "button" %>
+      </div>
+    </div>
   <% end %>
 
 <% else %>
 
   <%= form_for [ @reservation ] do |f| %>
-    <%= f.label :from_date %> <%= f.date_field :from_date, value: Date.today, min: Date.today %><br />
-    <%= f.label :to_date %> <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %><br />
-    <p>Reservation.bicycle.user.id: <%= @reservation.bicycle.user.id %></p>
-    <p>@user.id: <%= @user.id %></p>
-    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <div class="row">
+      <div class="large-8 columns">
+        <label>From Date
+          <%= f.date_field :from_date, value: Date.today, min: Date.today %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+        <label>To Date
+          <%= f.date_field :to_date, value: (Date.today+2.days), min: Date.today %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+        <p>@bicycle.user.id: <%= @bicycle.user.id %></p>
+        <p>@user.id: <%= @user.id %></p>
+      </div>
+    </div>
+    <%= f.hidden_field :bicycle_id, value: @bicycle.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit "Save", class: "save" %>
+    <div class="row">
+      <div class="large-8 columns">
+        <%= f.submit "Save", class: "button" %>
+      </div>
+    </div>
   <% end %>
+
 <% end %>

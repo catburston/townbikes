@@ -34,7 +34,7 @@ class Location < ActiveRecord::Base
 
       # marker.infowindow   location.result + "<%= raw(link_to location_path(location.id)) %>" || location.address + "<%= raw(link_to location_path(location.id)) %>" || location.search + "<%= raw(link_to location_path(location.id)) %>"
       # marker.infowindow   (location.result || location.address || location.search) + link_to_home(location)
-      marker.infowindow   (location.result || location.address || location.search)
+      marker.infowindow   (location.result || location.address || location.search) + " <a href='/locations/#{location.id}'>link</a>"
     end.to_json
   end
 

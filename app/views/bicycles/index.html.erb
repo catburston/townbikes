@@ -28,7 +28,11 @@
                       <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
                       <% if user_signed_in? && bicycle.user_id == @user.id %>
                         <li><%= link_to "Edit", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get', class: "button" %></li>
-                        <li><%= link_to "Reservations", reservations_path(:bicycle_id => bicycle.id), class: "button" %></li>
+                        <li>
+                          <%= link_to reservations_path(:bicycle_id => bicycle.id), class: "button" do %>
+                            Reservations (<%= bicycle.reservations.count %>)
+                          <% end %>
+                        </li>
                       <% end %>
                     </ul>
                   </div>

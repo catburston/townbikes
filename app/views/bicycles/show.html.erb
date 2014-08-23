@@ -25,7 +25,9 @@
       <li>Location: <%= @bicycle.location.city %></li>
       <li>
         <% if @user.id == @bicycle.user.id %>
-            <%= link_to "Reservations", reservations_path(:bicycle_id => @bicycle.id), class: "button" %>
+            <%= link_to reservations_path(:bicycle_id => @bicycle.id), class: "button" do %>
+              Reservations (<%= @bicycle.reservations.count %>)
+            <% end %>
             <%= link_to "Edit", edit_user_bicycle_path(@bicycle.user_id, @bicycle.id), method: 'get', class: "button" %>
         <% else %>
             <%= link_to 'Reserve', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ), class: "button" %>

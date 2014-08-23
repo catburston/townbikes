@@ -1,22 +1,41 @@
-<h1>Bicycles Index</h1>
-<ul class="small-block-grid-3">
-  <% @bicycles.each do |bicycle| %>
-    <li>
-      <%= link_to "see more details", bicycle_path(bicycle.id) %><br />
-      Bicycle ID: <%= bicycle.id %><br />
-      Manufacturer: <%= bicycle.manufacturer %><br />
-      Type: <%= bicycle.bicycle_type %><br />
-      Size: <%= bicycle.size %><br />
-      Cost per day: <%= bicycle.daily_cost %><br />
-      Properties: <%= bicycle.properties %><br />
-      Description: <%= bicycle.description %><br />
-      Location: <%= bicycle.location.city %><br />
-      Owner ID: <%= bicycle.user.id %> <%= bicycle.user.first_name %><br />
-      Photo: <%= image_tag(bicycle.photo_url) if bicycle.photo? %><br />
-      <% if user_signed_in? && bicycle.user_id == @user.id %>
-        <%= link_to "Edit My Bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %><br />
-        <%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => bicycle.id) %>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Bicycles</h1>
+    <ul class="small-block-grid-2">
+      <% @bicycles.each do |bicycle| %>
+        <li>
+          <div class="panel callout radius">
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="row collapse prefix-radius">
+                  <div class="small-7 columns">
+                    <ul class="no-bullet">
+                      <li><h4><%= bicycle.manufacturer %> <%= bicycle.bicycle_type %> (ID: <%= bicycle.id %>)</h4></li>
+                      <li>Size: <%= bicycle.size %></li>
+                      <li>Cost per day: €<%= bicycle.daily_cost %></li>
+                      <li>Properties: <%= bicycle.properties %></li>
+                      <li>Location: <%= bicycle.location.city %></li>
+                      <li>Owner: <%= bicycle.user.first_name %> (ID: <%= bicycle.user.id %>)</li>
+                    </ul>
+                  </div>
+                  <div class="small-5 columns">
+                    <% if bicycle.photo? %>
+                      <%= image_tag(bicycle.photo_url(:thumb)) %><br />
+                    <% end %>
+                    <ul>
+                      <li><%= link_to "View more details", bicycle_path(bicycle.id) %></li>
+                      <% if user_signed_in? && bicycle.user_id == @user.id %>
+                        <li><%= link_to "Edit this bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
+                        <li><%= link_to "See this bicycle's reservations", reservations_path(:bicycle_id => bicycle.id) %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>

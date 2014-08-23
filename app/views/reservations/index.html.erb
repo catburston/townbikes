@@ -27,6 +27,8 @@
                   <div class="small-5 columns">
                     <% if reservation.bicycle.photo? %>
                       <%= image_tag(reservation.bicycle.photo_url(:thumb)) %><br />
+                    <% else %>
+                      <%= image_tag("/assets/images/tandem-thumb.png") %>
                     <% end %>
                     <ul>
                       <li><%= link_to "View details", reservation_path(reservation.id) %></li>

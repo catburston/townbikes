@@ -1441,7 +1441,7 @@ $warning-color: #f08a24;
 // $include-legacy-visibility-classes: true;
 // $include-accessibility-classes: true;
 
-// **cat styles for reservation status
+// ** styles for reservation status
 span.pending { color: $warning-color; }
 span.accepted { color: $success-color; }
 span.rejected { color: $alert-color; }

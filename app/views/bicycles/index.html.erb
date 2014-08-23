@@ -20,7 +20,9 @@
                   </div>
                   <div class="small-5 columns">
                     <% if bicycle.photo? %>
-                      <%= image_tag(bicycle.photo_url(:thumb)) %><br />
+                      <%= image_tag(bicycle.photo_url(:thumb)) %>
+                    <% else %>
+                      <%= image_tag("/assets/images/tandem-thumb.png") %>
                     <% end %>
                     <ul>
                       <li><%= link_to "View more details", bicycle_path(bicycle.id) %></li>

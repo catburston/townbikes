@@ -1,112 +1,111 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <%= devise_error_messages! %>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">Email</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.email_field :email, autofocus: true %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">Password</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">Confirm Password</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
-          <span class="prefix">Confirm Password</span>
+        <div class="small-4 columns">
+          <span class="prefix">Current Password</span>
         </div>
-        <div class="small-9 columns">
-          <%= f.password_field :current_password, autocomplete: "off" %>
+        <div class="small-8 columns">
+          <%= f.password_field :current_password, autocomplete: "off", :placeholder => "Enter your current password to save changes" %>
         </div>
       </div>
-      <i>(we need your current password to confirm your changes)</i>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">First name</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.text_field :first_name %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">Last name</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.text_field :last_name %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
+        <div class="small-4 columns">
           <span class="prefix">Phone number</span>
         </div>
-        <div class="small-9 columns">
+        <div class="small-8 columns">
           <%= f.text_field :phone_number %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <label>Describe yourself
         <%= f.text_area :description %>
       </label>
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
-      <%= f.submit "Save" %>
+    <div class="large-12 columns">
+      <%= f.submit "Save", class: "button" %>
     </div>
   </div>
 <% end %>

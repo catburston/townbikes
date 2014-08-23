@@ -1,4 +1,6 @@
 class Reservation < ActiveRecord::Base
+  attr_accessor :current_user
+
   belongs_to  :bicycle
   belongs_to  :user
   has_one     :location, through: :user

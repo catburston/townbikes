@@ -1,7 +1,5 @@
 <% if @locations.blank? %>
-  <div>
-    No locations found for your search.
-  </div>
+  <%= render 'no_results' %>
 <% else %>
   <%= render 'multiple_locations', locations: @locations %>
 <% end %>

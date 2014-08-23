@@ -1,1 +1,36 @@
-<h1>townbikes</h1>
+<div id="carousel-container">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="carousel">
+        <div><%= image_tag("/assets/images/carousel-1.png") %></div>
+        <div><%= image_tag("/assets/images/carousel-2.png") %></div>
+        <div><%= image_tag("/assets/images/carousel-3.png") %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="small-block-grid-3">
+      <li>Barcelona</li>
+      <li>Oslo</li>
+      <li>Melbourne</li>
+      <li>Copenhagen</li>
+      <li>Berlin</li>
+      <li>Amsterdam</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.carousel').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
+  });
+</script>

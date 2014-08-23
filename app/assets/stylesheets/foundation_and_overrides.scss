@@ -134,9 +134,9 @@ $warning-color: #f08a24;
 // $aluminum    : #999999;
 // $jumbo       : #888888;
 // $monsoon     : #777777;
-// $steel       : #666666;
+$steel       : #666666;
 // $charcoal    : #555555;
-// $tuatara     : #444444;
+$tuatara     : #444444;
 // $oil         : #333333;
 // $jet         : #222222;
 // $black       : #000000;
@@ -1445,5 +1445,8 @@ $reveal-default-width: 30%;
 span.pending { color: $warning-color; }
 span.approved { color: $success-color; }
 span.rejected { color: $alert-color; }
+
+// ** style for carousel container
+#carousel-container { background: $steel; border-bottom: 4px solid $tuatara; }
 
 @import 'foundation';

@@ -40,6 +40,9 @@ gem 'therubyracer',  '~> 0.12.0'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# slick carousel for homepage
+# gem 'slick_rails', '~> 1.3.7'
+
 # validates_overlap to prevent bicycle reservations overlapping
 gem 'validates_overlap'
 

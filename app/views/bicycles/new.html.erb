@@ -1,3 +1,15 @@
-<h1>List your bike</h1>
-
-<%= render 'form', bicycle: @bicycle %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+        <h1>List a bicycle</h1>
+        <%= render 'form', bicycle: @bicycle %>
+      </div>
+      <div class="small-4 columns">
+        <ul class="no-bullet">
+          <li><%= link_to 'My bicycles', bicycles_path(:user_id => @user.id), class: "button" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

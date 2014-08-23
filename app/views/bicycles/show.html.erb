@@ -1,32 +1,36 @@
 <div class="row">
   <div class="large-12 columns">
-    <h1>Bicycles Show</h1>
+    <h1>Bicycle</h1>
   </div>
 </div>
 <div class="row">
   <div class="large-8 columns">
     <div id="bicycle-show">
-        <% if @bicycle.photo? %>
-            <%= image_tag(@bicycle.photo_url) %>
-        <% end %>
+      <% if @bicycle.photo? %>
+        <%= image_tag(@bicycle.photo_url) %>
+      <% else %>
+        <%= image_tag("/assets/images/tandem-default-636.png") %>
+      <% end %>
     </div>
-    <%= link_to "Back to Bicycles List", bicycles_path %>
+  <%= link_to "Back to Bicycles List", bicycles_path, class: "button" %>
   </div>
   <div class="large-4 columns">
-    Bicycle ID: <%= @bicycle.id %><br />
-    Bicycle ID: <%= @bicycle.id %><br />
-    Manufacturer: <%= @bicycle.manufacturer %><br />
-    Type: <%= @bicycle.bicycle_type %><br />
-    Size: <%= @bicycle.size %><br />
-    Cost per day: <%= @bicycle.daily_cost %><br />
-    Properties: <%= @bicycle.properties %><br />
-    Description: <%= @bicycle.description %><br />
-    User ID: <%= @bicycle.user_id %><br />
-    Owner: <%= link_to "#{@owner.first_name} #{@owner.last_name}", user_path(@owner.id) %><br />
-    <% if @user.id != @bicycle.user.id %>
-        <%= link_to 'Reserve this Bicycle', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ) %>
-    <% elsif @user.id == @bicycle.user.id %>
-        <%= link_to "See Reservations for this Bicycle", reservations_path(:bicycle_id => @bicycle.id) %>
-    <% end %>
+    <ul class="no-bullet">
+      <li><h5>(<%= @bicycle.id %>) <%= @bicycle.manufacturer %> <%= @bicycle.bicycle_type %></h5></li>
+      <li>Size: <%= @bicycle.size %></li>
+      <li>Cost per day: <%= @bicycle.daily_cost %></li>
+      <li>Properties: <%= @bicycle.properties %></li>
+      <li>Description: <%= @bicycle.description %></li>
+      <li>Bicycle Owner: <%= link_to "#{@bicycle.user.first_name} #{@bicycle.user.last_name}", user_path(@bicycle.user.id) %> (<%= @bicycle.user.id %>)</li>
+      <li>Location: <%= @bicycle.location.city %></li>
+      <li>
+        <% if @user.id == @bicycle.user.id %>
+            <%= link_to "Reservations", reservations_path(:bicycle_id => @bicycle.id), class: "button" %>
+            <%= link_to "Edit", edit_user_bicycle_path(@bicycle.user_id, @bicycle.id), method: 'get', class: "button" %>
+        <% else %>
+            <%= link_to 'Reserve', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ), class: "button" %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </div>

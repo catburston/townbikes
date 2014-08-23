@@ -6,7 +6,11 @@
             <h1><%= link_to 'townbik.es', root_path %></h1>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-          <li class="toggle-topbar menu-icon"><%= link_to '<span>Menu</span>', root_path %></li>
+          <li class="toggle-topbar menu-icon">
+            <%= link_to root_path do %>
+              <span>Menu</span>
+            <% end %>
+          </li>
         </ul>
 
         <section class="top-bar-section">

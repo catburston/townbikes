@@ -134,9 +134,9 @@ $warning-color: #f08a24;
 // $aluminum    : #999999;
 // $jumbo       : #888888;
 // $monsoon     : #777777;
-// $steel       : #666666;
+$steel       : #666666;
 // $charcoal    : #555555;
-// $tuatara     : #444444;
+$tuatara     : #444444;
 // $oil         : #333333;
 // $jet         : #222222;
 // $black       : #000000;
@@ -1095,7 +1095,7 @@ $warning-color: #f08a24;
 // We use these to control the style of the modal itself.
 // $reveal-modal-bg: $white;
 // $reveal-position-top: rem-calc(100);
-// $reveal-default-width: 80%;
+$reveal-default-width: 30%;
 // $reveal-modal-padding: rem-calc(20);
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);
 
@@ -1445,5 +1445,8 @@ $warning-color: #f08a24;
 span.pending { color: $warning-color; }
 span.approved { color: $success-color; }
 span.rejected { color: $alert-color; }
+
+// ** style for carousel container
+#carousel-container { background: $steel; border-bottom: 4px solid $tuatara; }
 
 @import 'foundation';

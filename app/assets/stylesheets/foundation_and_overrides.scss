@@ -1449,4 +1449,13 @@ span.rejected { color: $alert-color; }
 // ** style for carousel container
 #carousel-container { background: $steel; border-bottom: 4px solid $tuatara; }
 
+// ** styles for homepage modules
+.city-locations { height: 226px; }
+#barcelona { background: url('/assets/images/barcelona.png') no-repeat; }
+#oslo { background: url('/assets/images/oslo.png') no-repeat; }
+#amsterdam { background: url('/assets/images/amsterdam.png') no-repeat; }
+#copenhagen { background: url('/assets/images/copenhagen.png') no-repeat; }
+#berlin { background: url('/assets/images/berlin.png') no-repeat; }
+#melbourne { background: url('/assets/images/melbourne.png') no-repeat; }
+
 @import 'foundation';

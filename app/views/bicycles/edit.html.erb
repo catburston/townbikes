@@ -7,9 +7,9 @@
       </div>
       <div class="small-4 columns">
         <ul class="no-bullet">
-          <li>
+          <li class="th">
             <% if @bicycle.photo? %>
-              <%= image_tag(@bicycle.thumb.photo_url) %>
+              <%= image_tag(@bicycle.photo_url(:thumb)) %>
             <% else %>
               <%= image_tag("/assets/images/tandem-thumb.png") %>
             <% end %>

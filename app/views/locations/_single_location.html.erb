@@ -7,13 +7,11 @@
     <div id="geolocation" style="width: 800px; height: 600px;"></div>
   </div>
 </div>
+
 <script>
-
   var handler = Gmaps.build('Google');
-
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
     var marker = handler.addMarkers(<%= raw Location.markers(location) %>);
     handler.map.centerOn(marker[0]);
   });
-
 </script>

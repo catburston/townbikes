@@ -21,9 +21,9 @@
                   <div class="small-5 columns">
                     <ul class="no-bullet">
                       <% if bicycle.photo? %>
-                        <li><%= image_tag(bicycle.photo_url(:thumb)) %></li>
+                        <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
                       <% else %>
-                        <li><%= image_tag("/assets/images/tandem-thumb.png") %></li>
+                        <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
                       <% end %>
                       <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
                       <% if user_signed_in? && bicycle.user_id == @user.id %>

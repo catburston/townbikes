@@ -43,6 +43,8 @@ gem 'mini_magick'
 # slick carousel for homepage
 # gem 'slick_rails', '~> 1.3.7'
 
+gem 'rails_12factor', group: :production
+
 # validates_overlap to prevent bicycle reservations overlapping
 gem 'validates_overlap'
 

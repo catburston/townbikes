@@ -32,8 +32,9 @@ class ReservationsController < ApplicationController
   def create
     @user = current_user
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
+    @owner = @bicycle.user
     @reservation = Reservation.new( reservation_params )
-    if @reservation.save
+    if @owner != @user && @reservation.save
       redirect_to action: :index, controller: :reservations, notice: 'Reservation was successfully created'
     else
       @errors = @visit.errors.full_messages
@@ -55,8 +56,7 @@ class ReservationsController < ApplicationController
     if @reservation.update_attributes( reservation_params )
       redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'
     else
-        # @errors = @reservation.errors.full_messages
-        render :edit, :bicycle_id => @reservation.bicycle.id
+      render :edit, :bicycle_id => @reservation.bicycle.id
     end
   end
 
@@ -64,8 +64,5 @@ class ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :bicycle_id, :from_date, :to_date, :status )
-  end
-  def reservation_update_params
-    params.require(:reservation).permit(:status)
   end
 end

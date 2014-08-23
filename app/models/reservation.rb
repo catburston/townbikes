@@ -1,4 +1,6 @@
 class Reservation < ActiveRecord::Base
+  attr_accessor :current_user
+
   belongs_to  :bicycle
   belongs_to  :user
   has_one     :location, through: :user
@@ -10,7 +12,6 @@ class Reservation < ActiveRecord::Base
 
   validate :from_date_is_in_future
   validate :from_date_before_to_date
-  validate :renter_is_not_owner
 
   validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Some validation title", :message_content => "Some validation message", :exclude_edges => ["from_date", "to_date"]}, :on => :create
 
@@ -30,12 +31,6 @@ class Reservation < ActiveRecord::Base
         return
       elsif from_date > to_date
         errors.add(:to_date, "should be after its beginning")
-      end
-    end
-
-    def renter_is_not_owner
-      if current_user.id == user_id
-        errors.add("the owner of a bicycle cannot rent the bicycle")
       end
     end
 

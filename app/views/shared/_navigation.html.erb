@@ -12,12 +12,12 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="right">
-            <li class="active"><%= link_to 'List your Bicycle', new_user_bicycle_path(@user.id) %></li>
+            <li class="active"><%= link_to 'List a Bicycle', new_user_bicycle_path(@user.id) %></li>
             <li class="has-dropdown">
-              <a href="#">My Account</a>
+              <a href="#"><%= @user.first_name %></a>
               <ul class="dropdown">
-                <li class="active"><%= link_to 'My Reservations', reservations_path %></li>
-                <li><%= link_to 'My Bicycles', bicycles_path(:user_id => @user.id) %></li>
+                <li class="active"><%= link_to 'Upcoming Reservations', reservations_path %></li>
+                <li><%= link_to 'Manage My Bicycles', bicycles_path(:user_id => @user.id) %></li>
                 <li><%= link_to 'Locations', locations_path %></li>
                 <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>
                 <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -48,7 +48,7 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="right">
-            <li class="active"><%= link_to 'List your Bicycle', new_user_registration_path %></li>
+            <li class="active"><%= link_to 'List a Bicycle', new_user_registration_path %></li>
             <li><%= link_to 'Login', '#', :data => { :"reveal-id" => "loginModal" }  %></li>
             <li><%= link_to 'Sign up', '#', :data => { :"reveal-id" => "signupModal" } %></li>
           </ul>

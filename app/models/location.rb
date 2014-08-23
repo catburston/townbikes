@@ -24,16 +24,9 @@ class Location < ActiveRecord::Base
 
   def self.markers(locations)
     Gmaps4rails.build_markers(locations) do |location, marker|
-      # marker.innerHTML    "<%= raw(link_to(location_path(location.id)) %>"
-      # url location_path(location.id)
       marker.lat          location.latitude
       marker.lng          location.longitude
       marker.title        "Location HERE"
-      # marker.locid        location.id
-      # marker.infowindow render_to_string(location.result + "<%= raw(link_to location_path(location.id)) %>" || location.address + "<%= raw(link_to location_path(location.id)) %>" || location.search + "<%= raw(link_to location_path(location.id)) %>")
-
-      # marker.infowindow   location.result + "<%= raw(link_to location_path(location.id)) %>" || location.address + "<%= raw(link_to location_path(location.id)) %>" || location.search + "<%= raw(link_to location_path(location.id)) %>"
-      # marker.infowindow   (location.result || location.address || location.search) + link_to_home(location)
       marker.infowindow   (location.result || location.address || location.search) + " <a href='/locations/#{location.id}'>link</a>"
     end.to_json
   end

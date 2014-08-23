@@ -37,7 +37,7 @@ class ReservationsController < ApplicationController
     if @owner != @user && @reservation.save
       redirect_to action: :index, controller: :reservations, notice: 'Reservation was successfully created'
     else
-      @errors = @visit.errors.full_messages
+      # @errors = @visit.errors.full_messages
       render :new
     end
   end
@@ -45,18 +45,21 @@ class ReservationsController < ApplicationController
   def edit
     @user = current_user
     @bicycle = Bicycle.find_by(id: params[:bicycle_id])
-    @reservation = Reservation.find(params[:id])
-    @location = Location.find_by(user_id: @user.id)
+    @reservation = current_user.reservations.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to reservations_path, notice: "You cannot edit this reservation."
   end
 
   def update
     @user = current_user
     @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
-    if @reservation.update_attributes( reservation_params )
+    if @reservation.from_date.to_date < Date.today.to_date
+      redirect_to reservations_path, notice: "This reservation begins today and cannot be updated"
+    elsif @reservation.update_attributes( reservation_params )
       redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'
     else
-      render :edit, :bicycle_id => @reservation.bicycle.id
+      render :edit, :bicycle_id => @reservation.bicycle.id, notice: "This reservation cannot be updated"
     end
   end
 

@@ -21,14 +21,18 @@
                   <div class="small-5 columns">
                     <ul class="no-bullet">
                       <% if bicycle.photo? %>
-                        <li><%= image_tag(bicycle.photo_url(:thumb)) %></li>
+                        <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
                       <% else %>
-                        <li><%= image_tag("/assets/images/tandem-thumb.png") %></li>
+                        <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
                       <% end %>
                       <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
                       <% if user_signed_in? && bicycle.user_id == @user.id %>
                         <li><%= link_to "Edit", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get', class: "button" %></li>
-                        <li><%= link_to "Reservations", reservations_path(:bicycle_id => bicycle.id), class: "button" %></li>
+                        <li>
+                          <%= link_to reservations_path(:bicycle_id => bicycle.id), class: "button" do %>
+                            Reservations (<%= bicycle.reservations.count %>)
+                          <% end %>
+                        </li>
                       <% end %>
                     </ul>
                   </div>

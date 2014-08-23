@@ -20,7 +20,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -28,6 +28,8 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -61,7 +63,7 @@ Rails.application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   config.assets.precompile += %w( underscore-min.js )
   config.assets.precompile += %w( vendor/modernizr.js )
-  config.assets.precompile += %w( .js .css *.css.scss .svg .eot .woff .ttf)
+  config.assets.precompile += %w( .js .css *.css.scss .svg .eot .woff .ttf .png)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

@@ -12,7 +12,7 @@
         <%= image_tag("/assets/images/tandem-default-636.png") %>
       <% end %>
     </div>
-  <%= link_to "Back to Reservation History", reservations_path %>
+  <%= link_to "Back to Reservation History", reservations_path, class: "button" %>
   </div>
   <div class="large-4 columns">
     <ul class="no-bullet">
@@ -22,7 +22,9 @@
       <li>Status: <span class="<%= @reservation.status %>"><%= @reservation.status %></span></li>
       <li>Bicycle Owner: <%= link_to "#{@reservation.bicycle.user.first_name} #{@reservation.bicycle.user.last_name}", user_path(@reservation.bicycle.user.id) %> <%= @reservation.bicycle.user.id %></li>
       <li>Location: <%= @reservation.bicycle.location.city %></li>
-      <li><%= link_to "Edit", edit_reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id) %></li>
+      <% if @reservation.bicycle.user_id == @user.id %>
+        <li><%= link_to "Edit", edit_reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), class: "button" %></li>
+      <% end %>
     </ul>
   </div>
 </div>

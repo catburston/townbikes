@@ -1,3 +1,23 @@
-<h1>Update my reservation</h1>
 
-<%= render 'form', reservation: @reservation %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+        <h1>Edit reservation</h1>
+        <%= render 'form', reservation: @reservation %>
+      </div>
+      <div class="small-4 columns">
+        <ul class="no-bullet">
+          <li>
+            <% if @reservation.bicycle.photo? %>
+              <%= image_tag(@reservation.bicycle.photo_url(:thumb)) %>
+            <% else %>
+              <%= image_tag("/assets/images/tandem-thumb.png") %>
+            <% end %>
+          </li>
+          <li><%= link_to 'Reservation history', reservations_path, class: "button" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

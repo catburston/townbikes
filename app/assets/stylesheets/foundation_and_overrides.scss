@@ -1443,7 +1443,7 @@ $warning-color: #f08a24;
 
 // ** styles for reservation status
 span.pending { color: $warning-color; }
-span.accepted { color: $success-color; }
+span.approved { color: $success-color; }
 span.rejected { color: $alert-color; }
 
 @import 'foundation';

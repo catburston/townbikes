@@ -1,5 +1,23 @@
-<h1>Update my bicycle</h1>
-
-<%= render 'form', bicycle: @bicycle %>
-
-<%= link_to "Delete Bicycle", user_bicycle_path(@user, @bicycle), method: 'delete', confirm: 'Are you sure?' %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+        <h1>Edit bicycle</h1>
+        <%= render 'form', bicycle: @bicycle %>
+      </div>
+      <div class="small-4 columns">
+        <ul class="no-bullet">
+          <li>
+            <% if @bicycle.photo? %>
+              <%= image_tag(@bicycle.thumb.photo_url) %>
+            <% else %>
+              <%= image_tag("/assets/images/tandem-thumb.png") %>
+            <% end %>
+          </li>
+          <li><%= link_to 'My bicycles', bicycles_path(:user_id => @user.id), class: "button" %></li>
+          <li><%= link_to "Delete Bicycle", user_bicycle_path(@user, @bicycle), method: 'delete', confirm: 'Are you sure?', class: "button" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

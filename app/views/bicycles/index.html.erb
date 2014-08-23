@@ -19,16 +19,16 @@
                     </ul>
                   </div>
                   <div class="small-5 columns">
-                    <% if bicycle.photo? %>
-                      <%= image_tag(bicycle.photo_url(:thumb)) %>
-                    <% else %>
-                      <%= image_tag("/assets/images/tandem-thumb.png") %>
-                    <% end %>
-                    <ul>
-                      <li><%= link_to "View more details", bicycle_path(bicycle.id) %></li>
+                    <ul class="no-bullet">
+                      <% if bicycle.photo? %>
+                        <li><%= image_tag(bicycle.photo_url(:thumb)) %></li>
+                      <% else %>
+                        <li><%= image_tag("/assets/images/tandem-thumb.png") %></li>
+                      <% end %>
+                      <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
                       <% if user_signed_in? && bicycle.user_id == @user.id %>
-                        <li><%= link_to "Edit this bicycle", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get' %></li>
-                        <li><%= link_to "See this bicycle's reservations", reservations_path(:bicycle_id => bicycle.id) %></li>
+                        <li><%= link_to "Edit", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get', class: "button" %></li>
+                        <li><%= link_to "Reservations", reservations_path(:bicycle_id => bicycle.id), class: "button" %></li>
                       <% end %>
                     </ul>
                   </div>

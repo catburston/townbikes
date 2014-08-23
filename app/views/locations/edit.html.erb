@@ -1,3 +1,14 @@
-<h1>Edit the location of your bicycle(s)</h1>
-
-<%= render 'form', location: @location %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+        <h1>Edit bicycle location</h1>
+        <%= render 'form', location: @location %>
+      </div>
+      <div class="small-4 columns">
+        <h2>Return to Profile</h2>
+        <%= link_to 'My profile', edit_user_registration_path, class: "button" %>
+      </div>
+    </div>
+  </div>
+</div>

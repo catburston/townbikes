@@ -116,9 +116,9 @@ $include-html-global-classes: $include-html-classes;
 // We use these as default colors throughout
 // $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
 // $white       : #FFFFFF;
@@ -1440,5 +1440,10 @@ $include-html-global-classes: $include-html-classes;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 // $include-accessibility-classes: true;
+
+// **cat styles for reservation status
+span.pending { color: $warning-color; }
+span.accepted { color: $success-color; }
+span.rejected { color: $alert-color; }
 
 @import 'foundation';

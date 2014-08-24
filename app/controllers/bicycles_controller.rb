@@ -29,7 +29,6 @@ class BicyclesController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:user_id])
     @bicycle = Bicycle.find(params[:id])
     if current_user != @bicycle.user
       redirect_to bicycle_path(@bicycle.id), notice: "You cannot edit a bicycle that you don't own"
@@ -37,7 +36,6 @@ class BicyclesController < ApplicationController
   end
 
   def update
-    # @user = User.find(params[:user_id])
     @bicycle = Bicycle.find(params[:id])
     if @bicycle.update_attributes bicycle_params
       redirect_to bicycle_path(@bicycle.id), notice: 'Bicycle was successfully updated'
@@ -47,9 +45,8 @@ class BicyclesController < ApplicationController
   end
 
   def destroy
-    # @user = User.find(params[:user_id])
+    @bicycle = Bicycle.find(params[:id]).destroy
     if current_user != @bicycle.user
-      bicycle = Bicycle.find(params[:id]).destroy
       redirect_to action: 'index'
     else
       redirect_to bicycle_path(@bicycle.id), notice: "You cannot delete a bicycle that you don't own"

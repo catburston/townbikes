@@ -13,17 +13,14 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @user = current_user
     @location = Location.find(params[:id])
   end
 
   def new
-    @user = current_user
     @location = Location.new
   end
 
   def create
-    @user = current_user
     @location = Location.new location_params
     @location.user = current_user
     if @location.save
@@ -34,18 +31,13 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    @user = current_user
     @location = Location.find(params[:id])
-  end
-
-  def destroy
-    @user = User.find(current_user)
-    location = @user.location.find(params[:id]).destroy
-    redirect_to action: 'index'
+    if current_user != @location.user
+      redirect_to location_path(@location.id), notice: "You cannot edit this location"
+    end
   end
 
   def update
-    @user = User.find(current_user)
     @location = Location.find(params[:id])
     if @location.update_attributes location_params
       redirect_to location_path(@location.id), notice: 'Location successfully updated'
@@ -53,6 +45,11 @@ class LocationsController < ApplicationController
       # @errors = @location.errors.full_messages
       render 'edit'
     end
+  end
+
+  def destroy
+    @location = current_user.location.find(params[:id]).destroy
+    redirect_to action: 'index'
   end
 
   private

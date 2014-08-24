@@ -8,7 +8,7 @@
       <div class="small-4 columns">
         <h2>Return to</h2>
         <%= link_to 'My profile', edit_user_registration_path, class: "button" %>
-        <%= link_to 'My bicycles', bicycles_path(:user_id => @user.id), class: "button" %>
+        <%= link_to 'My bicycles', bicycles_path(:user_id => current_user.id), class: "button" %>
       </div>
     </div>
   </div>

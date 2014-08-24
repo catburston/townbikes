@@ -24,7 +24,6 @@ class ReservationsController < ApplicationController
 
   def create
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
-    # @owner = @bicycle.user
     @reservation = Reservation.new( reservation_params )
     if @bicycle.user != current_user && @reservation.save
       redirect_to reservation_path(@reservation.id), notice: 'Reservation was successfully created'
@@ -34,7 +33,6 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    # @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
     if current_user != @reservation.owner
       redirect_to reservation_path(@reservation.id), notice:"You cannot edit this reservation."
@@ -42,7 +40,6 @@ class ReservationsController < ApplicationController
   end
 
   def update
-    # @bicycle = Bicycle.find_by(id: params[:bicycle_id])
     @reservation = Reservation.find(params[:id])
     if @reservation.from_date.to_date < Date.today.to_date
       redirect_to reservations_path, notice: "This reservation begins today and cannot be updated"

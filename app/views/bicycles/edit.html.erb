@@ -14,8 +14,8 @@
               <%= image_tag("/assets/images/tandem-thumb.png") %>
             <% end %>
           </li>
-          <li><%= link_to 'My bicycles', bicycles_path(:user_id => @user.id), class: "button" %></li>
-          <li><%= link_to "Delete Bicycle", user_bicycle_path(@user, @bicycle), method: 'delete', confirm: 'Are you sure?', class: "button" %></li>
+          <li><%= link_to 'My bicycles', bicycles_path(:user_id => current_user.id), class: "button" %></li>
+          <li><%= link_to "Delete Bicycle", user_bicycle_path(current_user, @bicycle), method: 'delete', confirm: 'Are you sure?', class: "button" %></li>
         </ul>
       </div>
     </div>

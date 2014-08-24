@@ -7,7 +7,7 @@
       </div>
       <div class="small-4 columns">
         <ul class="no-bullet">
-          <li><%= link_to 'My bicycles', bicycles_path(:user_id => @user.id), class: "button" %></li>
+          <li><%= link_to 'My bicycles', bicycles_path(:user_id => current_user.id), class: "button" %></li>
         </ul>
       </div>
     </div>

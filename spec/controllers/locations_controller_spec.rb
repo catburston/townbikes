@@ -23,24 +23,11 @@ describe LocationsController do
     context "with valid attributes" do
       it "saves the new location in the database" do
         expect{ post :create, user_id: @user.id, location: FactoryGirl.build(:location).attributes }.to change(Location,:count).by(1)
+      end
     end
       it "redirects to the new location" do
         post :create, user_id: @user.id, location: FactoryGirl.build(:location).attributes
         response.should redirect_to Location.last
       end
     end
-
-    context "with invalid attributes" do
-      it "is pending"
-      # it "does not save the new location in the database" do
-      # not sure how to test this as the user id is saved to the location after the location is created
-        # expect{ post :create, user_id: @user.id, location: FactoryGirl.attributes_for(:location, user_id: nil) }.to_not change(Location,:count)
-      it "is pending"
-      # it "re-renders the :new template" do
-      # not sure how to test this as the user id is saved to the location after the location is created
-        # post :create, user_id: @user.id, location: FactoryGirl.attributes_for(:location, user_id: nil)
-        # response.should render_template :new
-    end
-  end
-
 end

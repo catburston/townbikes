@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for [@user, @location] do |f| %>
+<%= form_for [ current_user, @location ] do |f| %>
   <div class="row">
     <div class="large-12 columns">
       <%= devise_error_messages! %>
@@ -84,7 +84,7 @@
       </div>
     </div>
   </div>
-  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="row">
     <div class="large-12 columns">
       <%= f.submit "Save", class: "button" %>

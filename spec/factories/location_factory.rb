@@ -6,6 +6,7 @@ FactoryGirl.define do
     l.suburb { Faker::Address.state_abbr }
     l.post_code { Faker::Address.postcode }
     l.state { Faker::Address.state }
+    l.city { Faker::Address.city }
     l.country { Faker::Address.country }
     l.latitude { Faker::Address.latitude }
     l.longitude { Faker::Address.longitude }

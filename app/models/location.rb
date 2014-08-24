@@ -1,6 +1,9 @@
 class Location < ActiveRecord::Base
   belongs_to    :user
   validates     :user_id, presence: true
+  validates     :city, presence: true
+  validates     :country, presence: true
+
   include ApplicationHelper
 
   # instruct Geocoder gem which method returns your object's geocodable address:
@@ -27,7 +30,7 @@ class Location < ActiveRecord::Base
       marker.lat          location.latitude
       marker.lng          location.longitude
       marker.title        "Location HERE"
-      marker.infowindow   (location.result || location.address || location.search) + " <a href='/locations/#{location.id}'>link</a>"
+      marker.infowindow   info_content(location)
     end.to_json
   end
 
@@ -47,6 +50,21 @@ class Location < ActiveRecord::Base
     elsif coordinates.present? && result.blank?
       reverse_geocode
     end
+  end
+
+  def  self.info_content(location)
+    (location.result || location.address || location.search) + "<br />#{location.user.first_name} has #{location.user.bicycles.count} bicycles at this location:<br />" + location_bicycles(location).compact.join("<br />")
+  end
+
+  def self.location_bicycles(location)
+    arr = []
+
+    location.user.bicycles.each do |b|
+      arr << "<a href='/bicycles/#{b.id}'>#{b.manufacturer}, #{b.bicycle_type}</a>"
+    end
+
+    arr
+
   end
 
 end

@@ -2,8 +2,9 @@ class Reservation < ActiveRecord::Base
   attr_accessor :current_user
 
   belongs_to  :bicycle
-  belongs_to  :user
-  has_one     :location, through: :user
+  belongs_to  :renter ,foreign_key: "user_id", class_name: "User"
+  has_one     :location, through: :owner
+  has_one     :owner, through: :bicycle, foreign_key: "user_id", class_name: "User"
 
   validates :bicycle_id, presence: true
   validates :user_id, presence: true
@@ -16,6 +17,10 @@ class Reservation < ActiveRecord::Base
   validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Some validation title", :message_content => "Some validation message", :exclude_edges => ["from_date", "to_date"]}, :on => :create
 
   #custom ActiveRecord validations
+  def owner
+    bicycle.user
+  end
+
   private
 
     def from_date_is_in_future

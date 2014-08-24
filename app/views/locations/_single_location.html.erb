@@ -1,10 +1,46 @@
-<div class="map">
-  Map of Location
-  <span class="location-address">
-    <%= location.result || location.address || location.search %>
-  </span>
-  <div style="width: 800px;">
-    <div id="geolocation" style="width: 800px; height: 600px;"></div>
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+      <h1>Address location</h1>
+        <div style="width: 800px;">
+          <div id="geolocation" style="width: 800px; height: 600px;"></div>
+        </div>
+      </div>
+      <div class="small-4 columns">
+        <ul class="no-bullet search-bicycle-results">
+          <li>
+            <span class="location-address">
+              <div class="panel">
+                <h3><small><%= location.address || location.result || location.search %></small></h3>
+                <% location.user.bicycles.each do |bicycle| %>
+                  <div class="panel callout">
+                    <div class="row">
+                      <div class="large-4 columns">
+                        <% if bicycle.photo? %>
+                          <%= image_tag(bicycle.photo_url(:minithumb), class: "th") %>
+                        <% else %>
+                          <%= image_tag("/assets/images/tandem-minithumb.png", class: "th") %>
+                        <% end %>
+                      </div>
+                      <div class="large-8 columns">
+                        <%= link_to "#{bicycle.manufacturer}, #{bicycle.bicycle_type}", bicycle_path(bicycle.id) %>
+                        <br />
+                        <%= bicycle.user.first_name %> <%= bicycle.user.last_name %>
+                        <br />
+                        € <%= bicycle.daily_cost %> per day
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 

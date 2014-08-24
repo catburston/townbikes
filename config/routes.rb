@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+   get 'user', :to => 'users#show'
+  end
+  # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index, :show, :new, :create, :edit, :update]
   resources :bicycles, only: [:index, :show]
   resources :locations, only: [:index, :show]
+
 
   # Example resource route with options:
   #   resources :products do

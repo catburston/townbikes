@@ -58,7 +58,7 @@ Location.create!(latitude: 59.9135781, longitude: 10.7452482, city: "Oslo", coun
 Location.create!(latitude: 59.9105716, longitude: 10.7262615, city: "Oslo", country: "Norway", street_name: "Holmens gate 3", result: "Holmens gate 3, 0250 Oslo, Norway", user_id: (u.id+2))
 Location.create!(latitude: 55.6761558, longitude: 12.5385229, city: "Copenhagen", country: "Denmark", street_name: "Jaegersborggade 10", result: "Jaegersborggade 10, 2200 Copenhagen, Denmark", user_id: (u.id+3))
 Location.create!(latitude: 55.6876485, longitude: 12.5574056, city: "Copenhagen", country: "Denmark", street_name: "Kastellet 1", result: "Kastellet 1, 2100 Copenhagen, Denmark", user_id: (u.id+4))
-Location.create!(latitude: 55.674112, longitude: 12.597563, city: "Copenhagen", country: "Denmark" street_name: "Pusher Street", result: "Pusher Street, 1440 Copenhagen, Denmark", user_id: (u.id+5))
+Location.create!(latitude: 55.674112, longitude: 12.597563, city: "Copenhagen", country: "Denmark", street_name: "Pusher Street", result: "Pusher Street, 1440 Copenhagen, Denmark", user_id: (u.id+5))
 Location.create!(latitude: 41.382271, longitude: 2.175687, city: "Barcelona", country: "Spain", street_name: "Carrer de l'Arc de Sant Ramon del Call, 4", result: "Carrer de l'Arc de Sant Ramon del Call, 4, 08002 Barcelona", user_id: (u.id+6))
 Location.create!(latitude: 52.5271218, longitude: 13.3983097, city: "Barcelona", country: "Spain", street_name: "Passatge Sert, 57", result: "Passatge Sert, 57, 08003 Barcelona", user_id: (u.id+7))
 Location.create!(latitude: 52.5207638, longitude: 13.3913145, city: "Berlin", country: "Germany", street_name: "Grosse Hamburger Strasse 42", result: "Grosse Hamburger Strasse 42, 10115 Berlin, Germany", user_id: (u.id+8))

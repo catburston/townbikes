@@ -10,6 +10,9 @@ class BicyclePhotosUploader < CarrierWave::Uploader::Base
     version :thumb do
       process :resize_to_fill => [200,200]
     end
+    version :minithumb do
+      process :resize_to_fill => [60,60]
+    end
 
   # Choose what kind of storage to use for this uploader:
   storage :file

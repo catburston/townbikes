@@ -53,14 +53,14 @@ class Location < ActiveRecord::Base
   end
 
   def  self.info_content(location)
-    (location.result || location.address || location.search) + "<br /><a href='/locations/#{location.id}'>See all bicycles</a><br />" + location_bicycles(location).compact.join(', ')
+    (location.result || location.address || location.search) + "<br />#{location.user.first_name} has #{location.user.bicycles.count} bicycles at this location:<br />" + location_bicycles(location).compact.join("<br />")
   end
 
   def self.location_bicycles(location)
     arr = []
 
     location.user.bicycles.each do |b|
-      arr << b.manufacturer
+      arr << "<a href='/bicycles/#{b.id}'>#{b.manufacturer}, #{b.bicycle_type}</a>"
     end
 
     arr

@@ -1464,4 +1464,7 @@ span.rejected { color: $alert-color; }
 footer { background:$steel; color: $secondary-color; height:50px; }
 footer a { color: $secondary-color; }
 
+// ** styles for location search page
+.search-bicycle-results .panel, .search-bicycle-results .panel.callout { margin-bottom: 0.5rem; padding: 0.5rem; }
+#multi_markers img { max-width : none; }
 @import 'foundation';

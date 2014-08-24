@@ -7,12 +7,35 @@
         </div>
       </div>
       <div class="small-4 columns">
-        <ul>
+        <ul class="no-bullet search-bicycle-results">
           <% locations.each do |location| %>
-            <li><span class="location-address">
-              <%= location.result || location.address || location.search %>
-              <%= link_to "See location", location_path(location.id) %>
-            </span></li>
+            <li>
+              <span class="location-address">
+                <div class="panel">
+                  <h3><small><%= location.address || location.result || location.search %></small></h3>
+                  <% location.user.bicycles.each do |bicycle| %>
+                    <div class="panel callout">
+                      <div class="row">
+                        <div class="large-4 columns">
+                          <% if bicycle.photo? %>
+                            <%= image_tag(bicycle.photo_url(:minithumb), class: "th") %>
+                          <% else %>
+                            <%= image_tag("/assets/images/tandem-minithumb.png", class: "th") %>
+                          <% end %>
+                        </div>
+                        <div class="large-8 columns">
+                          <%= link_to "#{bicycle.manufacturer}, #{bicycle.bicycle_type}", bicycle_path(bicycle.id) %>
+                          <br />
+                          <%= bicycle.user.first_name %> <%= bicycle.user.last_name %>
+                          <br />
+                          € <%= bicycle.daily_cost %> per day
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </span>
+            </li>
           <% end %>
         </ul>
       </div>

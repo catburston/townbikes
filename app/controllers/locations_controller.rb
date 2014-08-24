@@ -3,8 +3,6 @@ class LocationsController < ApplicationController
   helper_method :view_context
 
   def index
-    @user = current_user
-
     if params[:user_id]
       @locations = Location.where(:user_id => params[:user_id])
     elsif params[:search]

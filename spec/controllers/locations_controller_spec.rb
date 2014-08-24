@@ -23,11 +23,11 @@ describe LocationsController do
     context "with valid attributes" do
       it "saves the new location in the database" do
         expect{ post :create, user_id: @user.id, location: FactoryGirl.build(:location).attributes }.to change(Location,:count).by(1)
+      end
     end
       it "redirects to the new location" do
         post :create, user_id: @user.id, location: FactoryGirl.build(:location).attributes
         response.should redirect_to Location.last
       end
     end
-
 end

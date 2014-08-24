@@ -24,7 +24,7 @@
       <li>Bicycle Owner: <%= link_to "#{@bicycle.user.first_name} #{@bicycle.user.last_name}", user_path(@bicycle.user.id) %> (<%= @bicycle.user.id %>)</li>
       <li>Location: <%= @bicycle.location.city %></li>
       <li>
-        <% if @user.id == @bicycle.user.id %>
+        <% if current_user.id == @bicycle.user.id %>
             <%= link_to reservations_path(:bicycle_id => @bicycle.id), class: "button" do %>
               Reservations (<%= @bicycle.reservations.count %>)
             <% end %>

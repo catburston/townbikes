@@ -66,5 +66,5 @@ Location.create!(latitude: 52.51862, longitude: 13.376187, city: "Berlin", stree
 Location.create!(latitude: -37.753326, longitude: 145.001801, city: "Melbourne", street_name: "822 High St", result: "822 High St, Thornbury VIC 3071, Melbourne, Australia", user_id: (u.id+10))
 Location.create!(latitude: -37.802504, longitude: 144.949549, city: "Melbourne", street_name: "103-107 Errol St", result: "103-107 Errol St, North Melbourne, VIC 3051, Melbourne, Australia", user_id: (u.id+11))
 Location.create!(latitude: -37.754558, longitude: 144.999938, city: "Melbourne", street_name: "23 Plow St", result: "23 Plow St, Thornbury VIC 3071, Melbourne, Australia", user_id: (u.id+12))
-Location.create!(latitude: 52.359998, longitude: 4.885219, city: "Barcelona14", street_name: "Museumstraat 1", result: "Museumstraat 1, 1071 XX Amsterdam, Netherlands", user_id: (u.id+13))
-Location.create!(latitude: 52.3751513, longitude: 4.8840898, city: "Barcelona15", street_name: "Herengracht 90", result: ", 1015 BS Amsterdam, Netherlands", user_id: (u.id+14))
+Location.create!(latitude: 52.359998, longitude: 4.885219, city: "Amsterdam", street_name: "Museumstraat 1", result: "Museumstraat 1, 1071 XX Amsterdam, Netherlands", user_id: (u.id+13))
+Location.create!(latitude: 52.3751513, longitude: 4.8840898, city: "Amsterdam", street_name: "Herengracht 90", result: "Herengracht 90, 1015 BS Amsterdam, Netherlands", user_id: (u.id+14))

@@ -11,7 +11,7 @@
           <% locations.each do |location| %>
             <li><span class="location-address">
               <%= location.result || location.address || location.search %>
-              <%= link_to "see more details", location_path(location.id) %>
+              <%= link_to "See location", location_path(location.id) %>
             </span></li>
           <% end %>
         </ul>

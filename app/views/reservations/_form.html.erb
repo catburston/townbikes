@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<% if @user.id == @bicycle.user.id %>
+<% if current_user == @reservation.owner %>
 
   <%= form_for [ @reservation ] do |f| %>
     <div class="row">
@@ -25,8 +25,9 @@
     </div>
     <div class="row">
       <div class="large-8 columns">
-        <p>@bicycle.user.id: <%= @bicycle.user.id %></p>
-        <p>@user.id: <%= @user.id %></p>
+        <p>@reservation.owner: <%= @reservation.owner.id %> <%= @reservation.owner.first_name %></p>
+        <p>@reservation.renter: <%= @reservation.renter.id %> <%= @reservation.renter.first_name %></p>
+        <p>current_user: <%= current_user.id %> <%= @current_user.first_name %></p>
       </div>
     </div>
     <div class="row">
@@ -36,8 +37,8 @@
         <%= f.radio_button :status, "rejected", :value=>'rejected' %><label for="Reject">Reject</label>
       </div>
     </div>
-    <%= f.hidden_field :bicycle_id, value: @bicycle.id %>
-    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <%= f.hidden_field :user_id, value: @reservation.renter.id %>
     <div class="row">
       <div class="large-8 columns">
         <%= f.submit "Save", class: "button" %>
@@ -64,12 +65,13 @@
     </div>
     <div class="row">
       <div class="large-8 columns">
-        <p>@bicycle.user.id: <%= @bicycle.user.id %></p>
-        <p>@user.id: <%= @user.id %></p>
+        <p>@reservation.owner: <%= @reservation.owner.id %> <%= @reservation.owner.first_name %></p>
+        <p>@reservation.renter: <%= @reservation.renter.id %> <%= @reservation.renter.first_name %></p>
+        <p>current_user: <%= current_user.id %> <%= current_user.first_name %></p>
       </div>
     </div>
-    <%= f.hidden_field :bicycle_id, value: @bicycle.id %>
-    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :bicycle_id, value: @reservation.bicycle.id %>
+    <%= f.hidden_field :user_id, value: @reservation.renter.id %>
     <div class="row">
       <div class="large-8 columns">
         <%= f.submit "Save", class: "button" %>

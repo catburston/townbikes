@@ -30,17 +30,4 @@ describe LocationsController do
       end
     end
 
-    context "with invalid attributes" do
-      it "is pending"
-      # it "does not save the new location in the database" do
-      # not sure how to test this as the user id is saved to the location after the location is created
-        # expect{ post :create, user_id: @user.id, location: FactoryGirl.attributes_for(:location, user_id: nil) }.to_not change(Location,:count)
-      it "is pending"
-      # it "re-renders the :new template" do
-      # not sure how to test this as the user id is saved to the location after the location is created
-        # post :create, user_id: @user.id, location: FactoryGirl.attributes_for(:location, user_id: nil)
-        # response.should render_template :new
-    end
-  end
-
 end

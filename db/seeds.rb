@@ -56,15 +56,20 @@ puts "Creating Locations"  # Always create seeds with lat & long & result to not
 Location.create!(latitude: 59.917816, longitude: 10.7494539, city: "Oslo", country: "Norway", street_name: "Slottsplassen 1", result: "Slottsplassen 1, 0010 Oslo, Norway", user_id: (u.id))
 Location.create!(latitude: 59.9135781, longitude: 10.7452482, city: "Oslo", country: "Norway", street_name: "Grueners gate 1", result: "Grueners gate 1, 0552 Oslo, Norway", user_id: (u.id+1))
 Location.create!(latitude: 59.9105716, longitude: 10.7262615, city: "Oslo", country: "Norway", street_name: "Holmens gate 3", result: "Holmens gate 3, 0250 Oslo, Norway", user_id: (u.id+2))
+
 Location.create!(latitude: 55.6761558, longitude: 12.5385229, city: "Copenhagen", country: "Denmark", street_name: "Jaegersborggade 10", result: "Jaegersborggade 10, 2200 Copenhagen, Denmark", user_id: (u.id+3))
 Location.create!(latitude: 55.6876485, longitude: 12.5574056, city: "Copenhagen", country: "Denmark", street_name: "Kastellet 1", result: "Kastellet 1, 2100 Copenhagen, Denmark", user_id: (u.id+4))
 Location.create!(latitude: 55.674112, longitude: 12.597563, city: "Copenhagen", country: "Denmark", street_name: "Pusher Street", result: "Pusher Street, 1440 Copenhagen, Denmark", user_id: (u.id+5))
+
 Location.create!(latitude: 41.382271, longitude: 2.175687, city: "Barcelona", country: "Spain", street_name: "Carrer de l'Arc de Sant Ramon del Call, 4", result: "Carrer de l'Arc de Sant Ramon del Call, 4, 08002 Barcelona", user_id: (u.id+6))
-Location.create!(latitude: 52.5271218, longitude: 13.3983097, city: "Barcelona", country: "Spain", street_name: "Passatge Sert, 57", result: "Passatge Sert, 57, 08003 Barcelona", user_id: (u.id+7))
+Location.create!(latitude: 52.5271218, longitude: 13.3983097, city: "Barcelona", country: "Spain", street_name: "Passatge Sert, 57", result: "Passatge Sert, 57, 08003 Barcelona, Spain", user_id: (u.id+7))
+
 Location.create!(latitude: 52.5207638, longitude: 13.3913145, city: "Berlin", country: "Germany", street_name: "Grosse Hamburger Strasse 42", result: "Grosse Hamburger Strasse 42, 10115 Berlin, Germany", user_id: (u.id+8))
 Location.create!(latitude: 52.51862, longitude: 13.376187, city: "Berlin", country: "Germany", street_name: "Platz der Republik 1", result: "Platz der Republik 1, 11011 Berlin, Germany", user_id: (u.id+9))
+
 Location.create!(latitude: -37.753326, longitude: 145.001801, city: "Melbourne", country: "Australia", street_name: "822 High St", result: "822 High St, Thornbury VIC 3071, Melbourne, Australia", user_id: (u.id+10))
 Location.create!(latitude: -37.802504, longitude: 144.949549, city: "Melbourne", country: "Australia", street_name: "103-107 Errol St", result: "103-107 Errol St, North Melbourne, VIC 3051, Melbourne, Australia", user_id: (u.id+11))
 Location.create!(latitude: -37.754558, longitude: 144.999938, city: "Melbourne", country: "Australia", street_name: "23 Plow St", result: "23 Plow St, Thornbury VIC 3071, Melbourne, Australia", user_id: (u.id+12))
+
 Location.create!(latitude: 52.359998, longitude: 4.885219, city: "Amsterdam", country: "Netherlands", street_name: "Museumstraat 1", result: "Museumstraat 1, 1071 XX Amsterdam, Netherlands", user_id: (u.id+13))
 Location.create!(latitude: 52.3751513, longitude: 4.8840898, city: "Amsterdam", country: "Netherlands", street_name: "Herengracht 90", result: "Herengracht 90, 1015 BS Amsterdam, Netherlands", user_id: (u.id+14))

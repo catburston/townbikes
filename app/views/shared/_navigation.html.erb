@@ -25,6 +25,7 @@
                 <li><%= link_to 'Locations', locations_path %></li>
                 <li><%= link_to('My profile', user_path(current_user.id)) %></li>
                 <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>
+                <li><%= link_to('Edit my location', edit_user_location_path(current_user.id, current_user.location.id)) %></li>
                 <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
               </ul>
             </li>

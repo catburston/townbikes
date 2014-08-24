@@ -1,4 +1,4 @@
-<h2>Register for townbik.es</h2>
+<h2>Register for a townbikes account</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   <div class="row">
@@ -50,7 +50,7 @@
 <% end %>
 <div class="row">
   <div class="large-12 columns">
-    <%= link_to "Sign in", new_session_path(resource_name) %><br />
+    Already have an account? <%= link_to "Sign in here", new_session_path(resource_name) %><br />
     <%= render "devise/shared/links" %>
   </div>
 </div>

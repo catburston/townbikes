@@ -1,0 +1,30 @@
+<div id="carousel-container">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="carousel">
+        <div><%= image_tag("/assets/images/carousel-4.png") %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h1>Welcome to townbikes</h1>
+    <p>At townbikes, we help you get around: wherever you <em><strong>are</strong></em>, wherever you are <em><strong>going</strong></em> and wherever you <em><strong>want to be</strong></em>.</p>
+    <p>With the comfort of a bicycle that fits your style, your needs and your quirks, you'll be ready to explore wherever you happen to touch down.</p>
+    <p>Get your leg over a dutch oma, straddle a racer or share a tandem with that special someone. For families, find child seats or fit all the kids in a bakfiets.</p>
+    <p>Register for a townbikes account and put your bike to work.</p>
+    <p class="text-center"><%= link_to 'Sign up now', '#', :data => { :"reveal-id" => "signupModal" }, class: "button" %></p></p>
+  </div>
+  <div class="large-6 columns">
+    <ul class="small-block-grid-2">
+      <li><div class="city-locations text-center" id="barcelona"><h2><%= link_to 'Barcelona', locations_path(:search => 'barcelona') %></h2></div></li>
+      <li><div class="city-locations text-center" id="oslo"><h2><%= link_to 'Oslo', locations_path(:search => 'oslo') %></h2></div></li>
+      <li><div class="city-locations text-center" id="melbourne"><h2><%= link_to 'Melbourne', locations_path(:search => 'melbourne') %></h2></div></li>
+      <li><div class="city-locations text-center" id="copenhagen"><h2><%= link_to 'Copenhagen', locations_path(:search => 'copenhagen') %></h2></div></li>
+      <li><div class="city-locations text-center" id="berlin"><h2><%= link_to 'Berlin', locations_path(:search => 'berlin') %></h2></div></li>
+      <li><div class="city-locations text-center" id="amsterdam"><h2><%= link_to 'Amsterdam', locations_path(:search => 'amsterdam') %></h2></div></li>
+    </ul>
+  </div>
+</div>

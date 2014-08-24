@@ -1,44 +1,62 @@
-
+CU: <%= current_user.id %>, UID: <%= @user.id %><%= current_user.id == @user.id %>
 <div class="row">
   <div class="large-12 columns">
-    <h1>Profile: <%= @user.first_name %> <%= @user.last_name %></h1>
-    <h3>Name: <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_registration_path(current_user.id) %></h3>
-    <h4>Location: <%= link_to "#{@user.location.city}", edit_user_location_path(current_user.id, current_user.location.id) %></h4>
-    <ul class="small-block-grid-2">
-      <% @user.bicycles.each do |bicycle| %>
-        <li>
-          <div class="panel callout radius">
-            <div class="row">
-              <div class="large-12 columns">
-                <div class="row collapse prefix-radius">
-                  <div class="small-7 columns">
-                    <ul class="no-bullet">
-                      <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}  ID: #{bicycle.id}", bicycle_path(bicycle.id) %></h5></li>
-                      <li>Size: <%= bicycle.size %></li>
-                      <li>Cost per day: <%= bicycle.daily_cost %></li>
-                      <li>Properties: <%= bicycle.properties %></li>
-                      <li>Description: <%= bicycle.description %></li>
-                    </ul>
-                  </div>
-                  <div class="small-5 columns">
-                    <ul class="no-bullet">
-                      <% if bicycle.photo? %>
-                        <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
-                      <% else %>
-                        <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
-                      <% end %>
-                      <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
-                      <% if user_signed_in? && bicycle.user == current_user %>
-                        <li><%= link_to "Edit", edit_user_bicycle_path(current_user.id, bicycle.id), class: "button" %></li>
-                      <% end %>
-                    </ul>
+    <% if current_user.id == @user.id && @user.first_name == nil && @user.last_name == nil %>
+      <h1>Profile: <%= current_user.email %></h1>
+      <h3>Name: <%= link_to "Update my profile", edit_user_registration_path(current_user.id) %></h3>
+    <% elsif @user.first_name != nil && @user.last_name != nil %>
+      <h1>Profile: <%= @user.first_name %> <%= @user.last_name %></h1>
+      <h3>Name: <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_registration_path(current_user.id) %></h3>
+    <% else %>
+      <h1>Profile: <%= @user.email %></h1>
+      <h3>Name: <%= @user.email %></h3>
+    <% end %>
+
+    <% if @user == current_user && current_user.location != nil %>
+      <h4>Location: <%= link_to "Add my location", new_user_location_path(current_user.id) %></h4>
+    <% else %>
+      <h4>Location: unknown</h4>
+    <% end %>
+
+    <% if @bicycles.size == 0 %>
+      <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id) %>
+    <% else %>
+      <ul class="small-block-grid-2">
+        <% @bicycles.each do |bicycle| %>
+          <li>
+            <div class="panel callout radius">
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="row collapse prefix-radius">
+                    <div class="small-7 columns">
+                      <ul class="no-bullet">
+                        <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}  ID: #{bicycle.id}", bicycle_path(bicycle.id) %></h5></li>
+                        <li>Size: <%= bicycle.size %></li>
+                        <li>Cost per day: <%= bicycle.daily_cost %></li>
+                        <li>Properties: <%= bicycle.properties %></li>
+                        <li>Description: <%= bicycle.description %></li>
+                      </ul>
+                    </div>
+                    <div class="small-5 columns">
+                      <ul class="no-bullet">
+                        <% if bicycle.photo? %>
+                          <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
+                        <% else %>
+                          <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
+                        <% end %>
+                        <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
+                        <% if user_signed_in? && bicycle.user == current_user %>
+                          <li><%= link_to "Edit", edit_user_bicycle_path(current_user.id, bicycle.id), class: "button" %></li>
+                        <% end %>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>

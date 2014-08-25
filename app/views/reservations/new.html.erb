@@ -1,3 +1,29 @@
-<h1>Create Reservation</h1>
-
-<%= render 'form', reservation: @reservation %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row collapse prefix-radius">
+      <div class="small-8 columns">
+        <h1>Select reservation dates</h1>
+        <%= render 'form', reservation: @reservation %>
+      </div>
+      <div class="small-4 columns">
+        <ul class="no-bullet">
+          <li>
+            <% if @bicycle.photo? %>
+              <%= image_tag(@bicycle.photo_url(:thumb)) %>
+            <% else %>
+              <%= image_tag("/assets/images/tandem-thumb.png") %>
+            <% end %>
+          </li>
+          <li><h5>(<%= @bicycle.id %>) <%= @bicycle.manufacturer %> <%= @bicycle.bicycle_type %></h5></li>
+          <li>Size: <%= @bicycle.size %></li>
+          <li>Cost per day: <%= @bicycle.daily_cost %></li>
+          <li>Properties: <%= @bicycle.properties %></li>
+          <li>Description: <%= @bicycle.description %></li>
+          <li>Bicycle Owner: <%= link_to "#{@bicycle.user.first_name} #{@bicycle.user.last_name}", user_path(@bicycle.user.id) %> (<%= @bicycle.user.id %>)</li>
+          <li>Location: <%= @bicycle.location.city %></li>
+          <li><%= link_to 'Bicycle details', bicycle_path(@bicycle.id), class: "button" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

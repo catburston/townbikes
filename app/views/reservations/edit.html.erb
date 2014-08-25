@@ -1,10 +1,13 @@
-
 <div class="row">
   <div class="large-12 columns">
     <div class="row collapse prefix-radius">
       <div class="small-8 columns">
         <h1>Edit reservation</h1>
-        <%= render 'form', reservation: @reservation %>
+        <% if current_user == @reservation.owner %>
+          <%= render 'owner_form', reservation: @reservation %>
+        <% else %>
+          <%= render 'form', reservation: @reservation %>
+        <% end %>
       </div>
       <div class="small-4 columns">
         <ul class="no-bullet">

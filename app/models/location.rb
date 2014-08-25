@@ -53,7 +53,7 @@ class Location < ActiveRecord::Base
   end
 
   def  self.info_content(location)
-    (location.result || location.address || location.search) + "<br />#{location.user.first_name} has #{location.user.bicycles.count} bicycles at this location:<br />" + location_bicycles(location).compact.join("<br />")
+    (location.result || location.address || location.search) + "<br />" + (location.user.first_name || location.user.email) + " has #{location.user.bicycles.count} bicycles at this location<br />" + location_bicycles(location).compact.join("<br />")
   end
 
   def self.location_bicycles(location)

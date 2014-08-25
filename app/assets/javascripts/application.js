@@ -19,6 +19,4 @@
 //= require foundation
 //= require_tree .
 
-$(document).foundation({
-  $('.alert-box').foundation({alert: {speed: 100}});
-});
+$(document).foundation();

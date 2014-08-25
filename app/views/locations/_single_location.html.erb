@@ -10,7 +10,11 @@
       <div class="small-4 columns">
         <ul class="no-bullet search-bicycle-results">
           <h1>Bicycles</h1>
+          <% if location.user.bicycles.empty? %>
+            <%= render 'no_bicycle', location: location %>
+          <% else %>
             <%= render 'bicycle', location: location %>
+          <% end %>
         </ul>
       </div>
     </div>

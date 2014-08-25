@@ -44,7 +44,8 @@ class ReservationsController < ApplicationController
     if @reservation.from_date.to_date < Date.today.to_date
       redirect_to reservations_path, notice: "This reservation begins today and cannot be updated"
     elsif @reservation.update_attributes( reservation_params )
-      redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'
+      StatusChangeMailer.status_change_mail(@reservation.renter, @reservation).deliver
+      redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation status was successfully updated'
     else
       render :edit, :bicycle_id => @reservation.bicycle.id, notice: "This reservation cannot be updated"
     end

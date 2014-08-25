@@ -1452,7 +1452,7 @@ span.rejected { color: $alert-color; }
 
 // ** styles for homepage modules
 .city-locations { height: 226px; }
-.city-locations h2 a { color: $secondary-color; line-height:220px; display:block; }
+.city-locations h2 a { color: $secondary-color; line-height:220px; display:block; text-shadow: 1px 1px 0 $steel, -1px -1px 0 $steel, 1px -1px 0 $steel, -2px 2px 2px $steel, 1px 1px 0 $steel; }
 #barcelona { background: url('/assets/images/barcelona.png') no-repeat; }
 #oslo { background: url('/assets/images/oslo.png') no-repeat; }
 #amsterdam { background: url('/assets/images/amsterdam.png') no-repeat; }

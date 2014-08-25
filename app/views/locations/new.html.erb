@@ -3,6 +3,11 @@
     <div class="row collapse prefix-radius">
       <div class="small-8 columns">
         <h1>List your location</h1>
+        <% if current_user.location == nil %>
+          <div class="panel callout">
+            <h4>Before you can add a bicycle, please enter your address</h4>
+          </div>
+        <% end %>
         <%= render 'form', location: @location %>
       </div>
       <div class="small-4 columns">

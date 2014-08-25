@@ -2,13 +2,31 @@ class ReservationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    if params[:status].present?
-      @user_reservations = Reservation.where(:user_id => current_user.id)
-      @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
+    if params[:bicycle] == "renter"
+      if params[:status].present?
+        @user_reservations = Reservation.where(:user_id => current_user.id)
+        @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
+      elsif params[:expired].present?
+        @user_reservations = Reservation.where(:user_id => current_user.id)
+        @user_reservations = @user_reservations.select { |reservation| reservation.to_date <= Date.today }
+      else
+        @user_reservations = Reservation.where(:user_id => current_user.id)
+      end
+    elsif params[:bicycle] == "owner"
+      if params[:status].present?
+        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
+        @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
+      elsif params[:expired].present?
+        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
+        @user_reservations = @user_reservations.select { |reservation| reservation.to_date <= Date.today }
+      else
+        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
+      end
     elsif params[:bicycle_id].present?
       @user_reservations = Reservation.where(bicycle_id: params[:bicycle_id])
     else
       @user_reservations = Reservation.where(:user_id => current_user.id)
+      # @user_reservations+= Reservation.where(:bicycle_id => current_user.bicycles.ids)
     end
   end
 

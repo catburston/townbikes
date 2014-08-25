@@ -3,7 +3,7 @@
     <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
       <ul class="title-area">
           <li class="name">
-            <h1><%= link_to 'townbik.es', root_path %></h1>
+            <h1><%= link_to 'townbikes', root_path %></h1>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
           <li class="toggle-topbar menu-icon">
@@ -25,8 +25,8 @@
             <li class="has-dropdown">
               <a href="#"><%= current_user.first_name || current_user.email %></a>
               <ul class="dropdown">
-                <li class="active"><%= link_to 'Upcoming Reservations', reservations_path %></li>
-                <li><%= link_to 'Manage My Bicycles', bicycles_path(:user_id => current_user.id) %></li>
+                <li class="active"><%= link_to 'Reservations', reservations_path %></li>
+                <li><%= link_to 'Bicycles', bicycles_path(:user_id => current_user.id) %></li>
                 <li><%= link_to('My profile', user_path(current_user.id)) %></li>
                 <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>
                 <% if current_user.location != nil %>

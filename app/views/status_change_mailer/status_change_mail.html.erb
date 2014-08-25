@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Reservation status has changed, <%= @user.first_name %></h1>
+    <h1>Reservation status has changed, <%= @renter.first_name %></h1>
     <p>The status of your reservation with ID <%= @reservation.id %> between dates <em><%= @reservation.from_date.strftime('%d %b, %y') %> and <%= @reservation.to_date.strftime('%d %b, %y') %></em> has changed to <strong><%= @reservation.status %></strong>.</p>
 
     <p>The reservation is for a <em><%= @reservation.bicycle.manufacturer %>, <%= @reservation.bicycle.bicycle_type %></em> in <strong><%= @reservation.owner.location.city %></strong>.</p>

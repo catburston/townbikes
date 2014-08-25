@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>A new reservation on one of your bikes has been created, <%= @owner.first_name %>!</h1>
+    <p>A new reservation with ID <%= @reservation.id %> between dates <em><%= @reservation.from_date.strftime('%d %b, %y') %> and <%= @reservation.to_date.strftime('%d %b, %y') %></em> has been created.</p>
+
+    <p>The reservation is for your <em><%= @reservation.bicycle.manufacturer %>, <%= @reservation.bicycle.bicycle_type %></em> for the user <%= @reservation.renter.email %>.</p>
+    <p>Log in to townbikes to see more details about this reservation: <a href="#{@url}"><%= @url %></a>.</p>
+    <p>The team at townbikes</p>
+  </body>
+</html>

@@ -16,7 +16,7 @@
 //= require underscore-min
 //= require gmaps/google
 //= require turbolinks
+//= require foundation
 //= require_tree .
 
-//= require foundation
 $(document).foundation();

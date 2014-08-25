@@ -1480,4 +1480,9 @@ footer a { color: $secondary-color; }
 .size-60 { font-size: 60px; }
 .size-72 { font-size: 72px; }
 
+// ** styles for Foundation vertical tabs
+.tabs.vertical { width: 30%; max-width: 30%; }
+.tabs-content.vertical { width: 70%; max-width: 70%; }
+
 @import 'foundation';
+@import "foundation/components/tabs";

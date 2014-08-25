@@ -26,9 +26,9 @@ class ReservationsController < ApplicationController
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
     @reservation = Reservation.new( reservation_params )
     if @bicycle.user != current_user && @reservation.save
-      redirect_to reservation_path(@reservation.id), notice: 'Reservation was successfully created'
+      redirect_to reservation_path(@reservation.id), notice: 'Reservation was sent to the bicycle owner for approval'
     else
-      render :new
+      render :new, :bicycle_id => @bicycle.id, notice: "The dates selected are not available"
     end
   end
 

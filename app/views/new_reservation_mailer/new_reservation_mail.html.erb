@@ -67,6 +67,7 @@
                                     
                                         
                                             <img align="center" alt="" src="https://gallery.mailchimp.com/aa76c89d9c6f0a34a6e6ea5c9/images/6fec68e2-485d-4cd8-a143-582044614e53.png" width="468" style="max-width: 468px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+
                                         
                                     
                                 </td>
@@ -103,7 +104,11 @@
             
                 
 
-                <img alt="" src="@bicycle.photo_url" width="564" style="max-width: 564px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" class="mcnImage">
+                
+                <%= image_tag @reservation.bicycle.photo_url , alt: 'reserved bicycle',
+                                            class: 'mcnImage',
+                                            width: '564',
+                                            style: 'max-width: 564px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;' %>
                 
             
             </td>

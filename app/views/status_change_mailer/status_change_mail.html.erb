@@ -103,7 +103,10 @@
             
                 
 
-                <img alt="" src="@bicycle.photo_url" width="564" style="max-width: 564px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" class="mcnImage">
+                <%= image_tag @reservation.bicycle.photo_url , alt: 'reserved bicycle',
+                                            class: 'mcnImage',
+                                            width: '564',
+                                            style: 'max-width: 564px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;' %>
                 
             
             </td>

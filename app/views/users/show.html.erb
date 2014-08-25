@@ -2,23 +2,23 @@
   <div class="large-12 columns">
     <% if current_user.id == @user.id && @user.first_name == nil && @user.last_name == nil %>
       <h1>Profile: <%= current_user.email %></h1>
-      <h3>Name: <%= link_to "Update my profile", edit_user_registration_path(current_user.id) %></h3>
+      <h3><%= link_to "Update my profile", edit_user_registration_path(current_user.id) %></h3>
     <% elsif @user.first_name != nil && @user.last_name != nil %>
       <h1>Profile: <%= @user.first_name %> <%= @user.last_name %></h1>
       <h3>Name: <%= link_to "#{@user.first_name} #{@user.last_name}", edit_user_registration_path(current_user.id) %></h3>
     <% else %>
       <h1>Profile: <%= @user.email %></h1>
-      <h3>Name: <%= @user.email %></h3>
+      <h3><%= @user.email %></h3>
     <% end %>
 
     <% if @user == current_user && current_user.location != nil %>
-      <h4>Location: <%= link_to "Add my location", new_user_location_path(current_user.id) %></h4>
+      <h4>Location: <%= current_user.location.city %></h4>
     <% else %>
-      <h4>Location: unknown</h4>
+      <h4>Location: <%= link_to "Add my location", new_user_location_path(current_user.id) %></h4>
     <% end %>
 
     <% if @bicycles.size == 0 %>
-      <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id) %>
+      <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id), class: "button" %>
     <% else %>
       <ul class="small-block-grid-2">
         <% @bicycles.each do |bicycle| %>

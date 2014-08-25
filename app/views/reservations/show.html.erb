@@ -23,7 +23,7 @@
       <li>Bicycle Owner: <%= link_to "#{@reservation.owner.first_name} #{@reservation.owner.last_name}", user_path(@reservation.owner.id) %> <%= @reservation.owner.id %></li>
       <li>Bicycle Renter: <%= link_to "#{@reservation.renter.first_name} #{@reservation.renter.last_name}", user_path(@reservation.renter.id) %> <%= @reservation.renter.id %></li>
       <li>Location: <%= @reservation.owner.location.city %></li>
-      <% if @reservation.owner == @reservation.renter %>
+      <% if @reservation.owner != @reservation.renter  && @reservation.owner == current_user %>
         <li><%= link_to "Edit", edit_reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), class: "button" %></li>
       <% end %>
     </ul>

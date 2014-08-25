@@ -16,16 +16,24 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="right">
-            <li class="active"><%= link_to 'List a Bicycle', new_user_bicycle_path(current_user.id) %></li>
+            <li class="active">
+              <% if current_user.location != nil %>
+                <%= link_to 'List a Bicycle', new_user_bicycle_path(current_user.id) %></li>
+              <% else %>
+                <%= link_to 'List a Bicycle', new_user_location_path(current_user.id) %></li>
+              <% end %>
             <li class="has-dropdown">
               <a href="#"><%= current_user.first_name || current_user.email %></a>
               <ul class="dropdown">
                 <li class="active"><%= link_to 'Upcoming Reservations', reservations_path %></li>
                 <li><%= link_to 'Manage My Bicycles', bicycles_path(:user_id => current_user.id) %></li>
-                <li><%= link_to 'Locations', locations_path %></li>
                 <li><%= link_to('My profile', user_path(current_user.id)) %></li>
                 <li><%= link_to('Edit my profile', edit_user_registration_path) %></li>
-                <li><%= link_to('Edit my location', edit_user_location_path(current_user.id, current_user.location.id)) %></li>
+                <% if current_user.location != nil %>
+                  <li><%= link_to('Edit my location', edit_user_location_path(current_user.id, current_user.location.id)) %></li>
+                <% else %>
+                  <li><%= link_to('Add my location', new_user_location_path(current_user.id)) %></li>
+                <% end %>
                 <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
               </ul>
             </li>

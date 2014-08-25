@@ -1,0 +1,16 @@
+<li>
+  <span class="location-address">
+    <div class="panel">
+      <h3><small><%= location.address || location.result || location.search %></small></h3>
+      <div class="panel callout">
+        <div class="row">
+          <div class="large-12 columns text-center">
+            <br />
+            <h5>No bicycles at this location</h5>
+            <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id), class: "button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</li>

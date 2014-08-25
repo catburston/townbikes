@@ -26,9 +26,10 @@ class ReservationsController < ApplicationController
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
     @reservation = Reservation.new( reservation_params )
     if @bicycle.user != current_user && @reservation.save
-      redirect_to reservation_path(@reservation.id), notice: 'Reservation was successfully created'
+      NewReservationMailer.new_reservation_mail(@reservation.owner, @reservation).deliver
+      redirect_to reservation_path(@reservation.id), notice: 'Reservation was sent to the bicycle owner for approval'
     else
-      render :new
+      render :new, :bicycle_id => @bicycle.id, notice: "The dates selected are not available"
     end
   end
 
@@ -44,7 +45,8 @@ class ReservationsController < ApplicationController
     if @reservation.from_date.to_date < Date.today.to_date
       redirect_to reservations_path, notice: "This reservation begins today and cannot be updated"
     elsif @reservation.update_attributes( reservation_params )
-      redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation was successfully updated'
+      StatusChangeMailer.status_change_mail(@reservation.renter, @reservation).deliver
+      redirect_to reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), notice: 'Reservation status was successfully updated. The renter will receive a notification.'
     else
       render :edit, :bicycle_id => @reservation.bicycle.id, notice: "This reservation cannot be updated"
     end

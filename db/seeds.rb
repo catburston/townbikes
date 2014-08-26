@@ -12,6 +12,7 @@ BICYCLES = 50
 
 manufacturers = ['Rivendell', 'Raleigh', 'Peugeot', 'gazelle', 'pedersen']
 bicycle_types = ['dutch - ladies', 'bakfiets', 'commuter', 'racer', 'MTB']
+bicycle_properties = {"helmet"=>"0", "trailer"=>"0", "child_seat"=>"0", "rear_basket"=>"0", "front_basket"=>"0", "internal_gears"=>"0"}
 sizes = [47, 52, 58, 60, 63, 66, 70]
 status = ['pending', 'approved', 'rejected']
 images = ['20111112 Bike light bracket 242_resized.jpg', '20120825-Amsterdam-038.png', '20140118-Amsterdam-095.png', '20111112-Bike-light-bracket-242_resized.png', '20120825-Amsterdam-064.png', '20140228-Antwerpen-046.png', '20120204-Rivendells-141_resized.png', '20120825-Amsterdam-121.png', 'IMG_2775.png', '20120211-Eastern-suburbs-ride-029_resized.png', '20120825-Amsterdam-123.png', 'IMG_3251.png', '20120211-Eastern-suburbs-ride-031_resized.png', '20120825-Amsterdam-131.png', '_DSC6749.png', '20120219-Rivendells-012_resized.png', '20130801-Mosel-Valley-014.png', '_DSC6754.png', '20120219-Rivendells-019_resized.png', '20130801-Mosel-Valley-014a.png']
@@ -35,7 +36,7 @@ User.create!(first_name: "owen", email: "owen@example.com", password: "aaaa1234"
 
 puts "Creating Bicycles ..."
 (1..BICYCLES).each do |index|
-  Bicycle.create!(manufacturer: manufacturers.sample, bicycle_type: bicycle_types.sample, size: sizes.sample, daily_cost: 20, user_id: u.id, photo: images.sample)
+  Bicycle.create!(manufacturer: manufacturers.sample, bicycle_type: bicycle_types.sample, size: sizes.sample, daily_cost: 20, user_id: u.id, photo: images.sample, properties: bicycle_properties)
 end
 
 bicycles = Bicycle.all.to_a

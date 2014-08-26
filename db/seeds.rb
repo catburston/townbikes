@@ -11,7 +11,7 @@ end
 BICYCLES = 50
 
 manufacturers = ['Rivendell', 'Raleigh', 'Peugeot', 'gazelle', 'pedersen']
-bicycle_types = ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "time-trial", "touring", "tricycle", "unicycle"]
+bicycle_types = ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "tandem", "time-trial", "touring", "tricycle", "unicycle"]
 bicycle_properties = {"ladies"=>"0","helmet"=>"0", "front_basket"=>"0", "rear_basket"=>"0", "trailer"=>"0", "internal_gears"=>"0", "child_seat"=>"0", "kickstand"=>"0", "safety_vest"=>"0", "panniers"=>"0", "rack"=>"0", "fenders"=>"0", "lock"=>"0", "skirt_guard"=>"0", "pump"=>"0", "toolkit"=>"0"}
 sizes = [47, 52, 58, 60, 63, 66, 70]
 status = ['pending', 'approved', 'rejected']

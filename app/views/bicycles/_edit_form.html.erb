@@ -17,7 +17,7 @@
   <div class="row">
     <div class="large-8 columns">
       <label>Bicycle Type
-      <%= select(:bicycle, :bicycle_type, ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "time-trial", "touring", "tricycle", "unicycle"]) %>
+      <%= select(:bicycle, :bicycle_type, ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "tandem", "time-trial", "touring", "tricycle", "unicycle"]) %>
       </label>
     </div>
   </div>
@@ -29,9 +29,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="large-8 columns">
+    <div class="large-12 columns">
       <label>Bicycle Features</label>
-      <ul class="small-block-grid-2">
+      <ul class="small-block-grid-4">
         <%= f.fields_for :properties do |p| %>
           <% @bicycle.properties.each do |k,v| %>
             <% checked = true if v == '1' %>

@@ -12,6 +12,7 @@ class BicyclesController < ApplicationController
 
   def show
     @bicycle = Bicycle.find(params[:id])
+    @properties_hash = @bicycle.properties.select { |key, val| val == "1" }
   end
 
   def new

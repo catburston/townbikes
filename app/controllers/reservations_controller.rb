@@ -29,11 +29,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def has_pending
-    @pending_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids).select { |reservation| reservation.status == "pending" }
-    @pending_count = @pending_reservations.count
-  end
-
   def show
     @reservation = Reservation.find(params[:id])
   end

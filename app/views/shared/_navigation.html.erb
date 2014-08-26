@@ -20,12 +20,22 @@
           <ul class="right">
             <li class="active">
               <% if current_user.location != nil %>
-                <%= link_to 'List a Bicycle', new_user_bicycle_path(current_user.id) %></li>
+                <%= link_to 'List a Bicycle', new_user_bicycle_path(current_user.id) %>
               <% else %>
-                <%= link_to 'List a Bicycle', new_user_location_path(current_user.id) %></li>
+                <%= link_to 'List a Bicycle', new_user_location_path(current_user.id) %>
               <% end %>
+            </li>
+            <li>
+              <% if pending_count > 0 %>
+                <span class="pending-notification" data-tooltip aria-haspopup="true" title="You have <%= pending_count %> pending reservations on your bicycles">
+                  <%= link_to raw("<i class='fi-info'></i>"), reservations_path({status: "pending", bicycle: "owner"}) %></i>
+                </span>
+              <% end %>
+            </li>
             <li class="has-dropdown">
-              <a href="#"><%= current_user.first_name || current_user.email %></a>
+              <a href="#">
+                <%= current_user.first_name || current_user.email %>
+              </a>
               <ul class="dropdown">
                 <li class="active"><%= link_to 'Reservations', reservations_path %></li>
                 <li><%= link_to 'Bicycles', bicycles_path(:user_id => current_user.id) %></li>

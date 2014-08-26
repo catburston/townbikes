@@ -28,7 +28,7 @@ $(document).foundation({
     tip_template : function (selector, content) {
       return '<span data-selector="' + selector + '" class="'
         + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
-        + '">' + content + '<br /><img src="/assets/images/ST-measurement.png" /><span class="nub"></span></span>';
+        + '">' + content + '<span class="nub"></span></span>';
     }
   },
   accordion: {

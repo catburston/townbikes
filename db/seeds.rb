@@ -12,7 +12,7 @@ BICYCLES = 50
 
 manufacturers = ['Rivendell', 'Raleigh', 'Peugeot', 'gazelle', 'pedersen']
 bicycle_types = ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "tandem", "time-trial", "touring", "tricycle", "unicycle"]
-bicycle_properties = {"ladies"=>"0","helmet"=>"0", "front_basket"=>"0", "rear_basket"=>"0", "trailer"=>"0", "internal_gears"=>"0", "child_seat"=>"0", "kickstand"=>"0", "safety_vest"=>"0", "panniers"=>"0", "rack"=>"0", "fenders"=>"0", "lock"=>"0", "skirt_guard"=>"0", "pump"=>"0", "toolkit"=>"0"}
+bicycle_properties = {"ladies"=>"0","helmet"=>"1", "front_basket"=>"1", "rear_basket"=>"0", "trailer"=>"0", "internal_gears"=>"0", "child_seat"=>"0", "kickstand"=>"0", "safety_vest"=>"0", "panniers"=>"0", "rack"=>"0", "fenders"=>"0", "lock"=>"1", "skirt_guard"=>"0", "pump"=>"0", "toolkit"=>"0"}
 sizes = [47, 52, 58, 60, 63, 66, 70]
 status = ['pending', 'approved', 'rejected']
 images = ['20111112 Bike light bracket 242_resized.jpg', '20120825-Amsterdam-038.png', '20140118-Amsterdam-095.png', '20111112-Bike-light-bracket-242_resized.png', '20120825-Amsterdam-064.png', '20140228-Antwerpen-046.png', '20120204-Rivendells-141_resized.png', '20120825-Amsterdam-121.png', 'IMG_2775.png', '20120211-Eastern-suburbs-ride-029_resized.png', '20120825-Amsterdam-123.png', 'IMG_3251.png', '20120211-Eastern-suburbs-ride-031_resized.png', '20120825-Amsterdam-131.png', '_DSC6749.png', '20120219-Rivendells-012_resized.png', '20130801-Mosel-Valley-014.png', '_DSC6754.png', '20120219-Rivendells-019_resized.png', '20130801-Mosel-Valley-014a.png']

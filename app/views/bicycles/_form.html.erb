@@ -17,34 +17,40 @@
   <div class="row">
     <div class="large-8 columns">
       <label>Bicycle Type
-      <%= select(:bicycle, :bicycle_type, [['dutch', 1], ['mtb', 2], ['child', 3], ['commuter', 4]]) %>
+      <%= select(:bicycle, :bicycle_type, ['dutch', 'mtb', 'racing bike', 'commuter']) %>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="large-8 columns">
       <label>Bicycle size <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span>
-      <%= f.text_field :size %>
+      <%= f.number_field :size %>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="large-8 columns">
       <label>Bicycle Features</label>
-      <%= f.fields_for :properties do |p| %>
-        <%= p.check_box :helmet %><%= p.label :helmet %>
-        <%= p.check_box :front_basket %><%= p.label :front_basket %>
-        <%= p.check_box :rear_basket %><%= p.label :rear_basket %>
-        <%= p.check_box :trailer %><%= p.label :trailer %>
-        <%= p.check_box :internal_gears %><%= p.label :internal_gears %>
-        <%= p.check_box :child_seat %><%= p.label :child_seat %>
-      <% end %>
+      <ul class="small-block-grid-2">
+        <%= f.fields_for :properties do |p| %>
+          <% @bicycle.properties.each do |k,v| %>
+            <% checked = true if v == '1' %>
+            <li class="panel">
+              <h4><small><%= k.capitalize %></small></h4>
+              <div class="switch">
+                <%= p.check_box k.to_s, {checked: checked} %>
+                <%= p.label k.to_s %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="large-8 columns">
       <label>Daily Cost
-        <%= f.text_field :daily_cost %>
+        <%= f.number_field :daily_cost %>
       </label>
     </div>
   </div>

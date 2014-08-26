@@ -21,9 +21,9 @@
               <% end %>
             </div>
             <div class="large-8 columns">
-              <%= link_to "#{bicycle.manufacturer}, #{bicycle.bicycle_type}", bicycle_path(bicycle.id) %>
+              <%= link_to "#{bicycle.manufacturer.capitalize} #{bicycle.bicycle_type}", bicycle_path(bicycle.id) %>
               <br />
-              <%= bicycle.user.first_name %> <%= bicycle.user.last_name %>
+              <%= bicycle.user.first_name.capitalize if bicycle.user.first_name.present? %> <%= bicycle.user.last_name if bicycle.user.last_name.present? %>
               <br />
               € <%= bicycle.daily_cost %> per day
             </div>

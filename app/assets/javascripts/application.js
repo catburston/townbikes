@@ -30,5 +30,10 @@ $(document).foundation({
         + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
         + '">' + content + '<br /><img src="/assets/images/ST-measurement.png" /><span class="nub"></span></span>';
     }
+  },
+  accordion: {
+    callback : function (accordion) {
+      console.log(accordion);
+    }
   }
 });

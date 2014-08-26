@@ -60,7 +60,7 @@ class Location < ActiveRecord::Base
     arr = []
 
     location.user.bicycles.each do |b|
-      arr << "<a href='/bicycles/#{b.id}'>#{b.manufacturer}, #{b.bicycle_type}</a>"
+      arr << "<a href='/bicycles/#{b.id}'>#{b.manufacturer.capitalize} #{b.bicycle_type}</a>"
     end
 
     arr

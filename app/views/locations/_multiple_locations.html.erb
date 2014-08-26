@@ -8,12 +8,14 @@
         </div>
       </div>
       <div class="small-4 columns">
-        <ul class="no-bullet search-bicycle-results">
+        <!-- <ul class="no-bullet search-bicycle-results"> -->
           <h1>Results</h1>
-          <% locations.each do |location| %>
-            <%= render 'bicycle', location: location %>
-          <% end %>
-        </ul>
+          <dl class="accordion" data-accordion>
+            <% locations.each do |location| %>
+              <%= render 'bicycle', location: location %>
+            <% end %>
+          </dl>
+        <!-- </ul> -->
       </div>
     </div>
   </div>

@@ -21,7 +21,7 @@
       <li>Cost per day: €<%= @bicycle.daily_cost %></li>
       <li>Properties: <%= @bicycle.properties %></li>
       <li>Description: <%= @bicycle.description %></li>
-      <li>Bicycle owner: <%= @bicycle.user.first_name.capitalize if @bicycle.user.first_name.present? %> <%= @bicycle.user.last_name.capitalize if @bicycle.user.last_name.present? %> <%= link_to @bicycle.user.email %></li>
+      <li>Owner: <%= @bicycle.user.first_name.capitalize if @bicycle.user.first_name.present? %> <%= @bicycle.user.last_name.capitalize if @bicycle.user.last_name.present? %> <%= link_to @bicycle.user.email %></li>
       <li>Location: <%= @bicycle.location.city %></li>
       <li>
         <% if current_user == @bicycle.user %>

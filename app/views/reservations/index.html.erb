@@ -31,8 +31,8 @@
                       <li>Reservation begins: <%= reservation.from_date.strftime('%d %b, %y') %></li>
                       <li>Reservation ends: <%= reservation.to_date.strftime('%d %b, %y') %></li>
                       <li>Reservation status: <span class="<%= reservation.status %>"><%= reservation.status %></span></li>
-                      <li>Bicycle owner: <%= reservation.owner.first_name.capitalize if reservation.owner.first_name.present? %> <%= reservation.owner.last_name.capitalize if reservation.owner.last_name.present? %> <%= link_to reservation.owner.email %></li>
-                      <li>Bicycle renter: <%= reservation.renter.first_name.capitalize if reservation.renter.first_name.present? %> <%= reservation.renter.last_name.capitalize if reservation.renter.last_name.present? %> <%= link_to reservation.renter.email %></li>
+                      <li>Owner: <%= reservation.owner.first_name.capitalize if reservation.owner.first_name.present? %> <%= reservation.owner.last_name.capitalize if reservation.owner.last_name.present? %> <%= link_to reservation.owner.email %></li>
+                      <li>Renter: <%= reservation.renter.first_name.capitalize if reservation.renter.first_name.present? %> <%= reservation.renter.last_name.capitalize if reservation.renter.last_name.present? %> <%= link_to reservation.renter.email %></li>
                       <li>Location: <%= reservation.owner.location.city %></li>
                     </ul>
                   </div>

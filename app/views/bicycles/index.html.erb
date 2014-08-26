@@ -15,7 +15,6 @@
                       <li>Cost per day: €<%= bicycle.daily_cost %></li>
                       <li>Properties: <%= bicycle.properties %></li>
                       <li>Owner: <%= bicycle.user.first_name.capitalize if bicycle.user.first_name.present? %> <%= bicycle.user.last_name.capitalize if bicycle.user.last_name.present? %> <%= link_to bicycle.user.email %></li>
-                      <li>Location: <%= bicycle.location.city %></li>
                     </ul>
                   </div>
                   <div class="small-5 columns">

@@ -26,7 +26,6 @@ class ReservationsController < ApplicationController
       @user_reservations = Reservation.where(bicycle_id: params[:bicycle_id])
     else
       @user_reservations = Reservation.where(:user_id => current_user.id)
-      # @user_reservations+= Reservation.where(:bicycle_id => current_user.bicycles.ids)
     end
   end
 

@@ -45,9 +45,10 @@ class BicyclesController < ApplicationController
   end
 
   def destroy
-    @bicycle = Bicycle.find(params[:id]).destroy
-    if current_user != @bicycle.user
-      redirect_to action: 'index'
+    @bicycle = Bicycle.find(params[:id])
+    if current_user == @bicycle.user
+      @bicycle = Bicycle.find(params[:id]).destroy
+      redirect_to bicycles_path
     else
       redirect_to bicycle_path(@bicycle.id), notice: "You cannot delete a bicycle that you don't own"
     end

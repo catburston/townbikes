@@ -2,17 +2,17 @@
   <div class="large-12 columns">
     <div class="row collapse prefix-radius">
       <div class="small-8 columns">
-        <h2>Edit <%= resource_name.to_s.humanize %> Profile</h2>
+        <h2>Edit my profile</h2>
         <%= render 'form' %>
       </div>
       <div class="small-4 columns">
-        <h2>Edit <%= resource_name.to_s.humanize %> Location</h2>
+        <h2>Edit my location</h2>
         <% if @user.location == nil %>
           <%= link_to 'Add a location to my profile', new_user_location_path(@user.id), class: "button" %>
         <% else %>
           <%= link_to 'Edit the location of your bicycle(s)', edit_user_location_path(@user.id, @user.location.id), class: "button" %>
         <% end %>
-        <h2>Close Account</h2>
+        <h3>Close my account</h3>
         <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button" %>
       </div>
     </div>

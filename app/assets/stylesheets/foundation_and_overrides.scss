@@ -1484,4 +1484,10 @@ footer a { color: $secondary-color; }
 .tabs.vertical { width: 30%; max-width: 30%; }
 .tabs-content.vertical { width: 70%; max-width: 70%; }
 
+// ** tooltip styles
+span.tooltip { opacity: 1 !important; }
+
+// ** pending notifications style
+.pending-notification a, .pending-notification a:hover { color: $warning-color; font-size: 20px }
+
 @import 'foundation';

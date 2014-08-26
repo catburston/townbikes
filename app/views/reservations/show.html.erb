@@ -16,12 +16,15 @@
   </div>
   <div class="large-4 columns">
     <ul class="no-bullet">
-      <li><h5>(<%= @reservation.id %>) <%= @reservation.bicycle.manufacturer %> <%= @reservation.bicycle.bicycle_type %> (ID: <%= @reservation.bicycle.id %>)</h5></li>
-      <li>From Date: <%= @reservation.from_date.strftime('%d %b, %y') %></li>
-      <li>To Date: <%= @reservation.to_date.strftime('%d %b, %y') %></li>
-      <li>Status: <span class="<%= @reservation.status %>"><%= @reservation.status %></span></li>
-      <li>Bicycle Owner: <%= link_to "#{@reservation.owner.first_name} #{@reservation.owner.last_name}", user_path(@reservation.owner.id) %> <%= @reservation.owner.id %></li>
-      <li>Bicycle Renter: <%= link_to "#{@reservation.renter.first_name} #{@reservation.renter.last_name}", user_path(@reservation.renter.id) %> <%= @reservation.renter.id %></li>
+      <li><h5><%= link_to "#{@reservation.bicycle.manufacturer} #{@reservation.bicycle.bicycle_type}".capitalize, bicycle_path(@reservation.bicycle.id) %></h5></li>
+      <li>
+        <h4><small>Reservation ID: <%= @reservation.id %></small></h4>
+      </li>
+      <li>Reservation begins: <%= @reservation.from_date.strftime('%d %b, %y') %></li>
+      <li>Reservation ends: <%= @reservation.to_date.strftime('%d %b, %y') %></li>
+      <li>Reservation status: <span class="<%= @reservation.status %>"><%= @reservation.status %></span></li>
+      <li>Owner: <%= @reservation.owner.first_name.capitalize if @reservation.renter.first_name.present? %> <%= @reservation.owner.last_name.capitalize if @reservation.renter.last_name.present? %> <%= link_to @reservation.owner.email %></li>
+      <li>Renter: <%= @reservation.renter.first_name.capitalize if @reservation.renter.first_name.present? %> <%= @reservation.renter.last_name.capitalize if @reservation.renter.last_name.present? %> <%= link_to @reservation.renter.email %></li>
       <li>Location: <%= @reservation.owner.location.city %></li>
       <% if @reservation.owner != @reservation.renter  && @reservation.owner == current_user %>
         <li><%= link_to "Edit", edit_reservation_path(@reservation.id, :bicycle_id => @reservation.bicycle.id), class: "button" %></li>

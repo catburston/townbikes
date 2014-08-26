@@ -19,4 +19,21 @@
 //= require foundation
 //= require_tree .
 
-$(document).foundation();
+$(document).foundation({
+  tooltip: {
+    selector : '.has-tip',
+    tooltip_class : '.tooltip',
+    touch_close_text: 'tap to close',
+    disable_for_touch: false,
+    tip_template : function (selector, content) {
+      return '<span data-selector="' + selector + '" class="'
+        + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
+        + '">' + content + '<span class="nub"></span></span>';
+    }
+  },
+  accordion: {
+    callback : function (accordion) {
+      console.log(accordion);
+    }
+  }
+});

@@ -21,6 +21,12 @@ class Reservation < ActiveRecord::Base
     bicycle.user
   end
 
+  def self.has_pending(uid)
+    pending_reservations = Reservation.where(:bicycle_id => User.find(uid).bicycles.ids, status: 'pending')
+    pending_count = pending_reservations.count
+    pending_count
+  end
+
   private
 
     def from_date_is_in_future

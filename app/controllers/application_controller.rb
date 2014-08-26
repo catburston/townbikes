@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def pending_count
+    Reservation.where(:bicycle_id => current_user.bicycles.ids, status: 'pending').count
+  end
+  helper_method :pending_count
+
   protected
 
     def configure_permitted_parameters

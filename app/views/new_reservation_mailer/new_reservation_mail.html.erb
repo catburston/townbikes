@@ -100,20 +100,6 @@
                     
     <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnImageCardBottomContent" width="100%" style="background-color: #008cba;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
         <tbody><tr>
-            <td class="mcnImageCardBottomImageContent" align="center" valign="top" style="padding-top: 0px;padding-right: 0px;padding-bottom: 0;padding-left: 0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-            
-                
-
-                
-                <%= image_tag @reservation.bicycle.photo_url , alt: 'reserved bicycle',
-                                            class: 'mcnImage',
-                                            width: '564',
-                                            style: 'max-width: 564px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;' %>
-                
-            
-            </td>
-        </tr>
-        <tr>
             <td class="mcnTextContent" valign="top" style="padding: 9px 18px;color: #FFFFFF;font-size: 16px;font-weight: bold;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-family: Helvetica;line-height: 150%;" width="546">
                 <br><h1 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 100%;letter-spacing: -1px;text-align: center;color: #FFFFFF !important;">A new reservation on one of your bikes has been created <%= @owner.first_name %></h1>
                 A new reservation with ID <%= @reservation.id %> between dates <em><%= @reservation.from_date.strftime('%d %b, %y') %> and <%= @reservation.to_date.strftime('%d %b, %y') %></em> has been created..<br /><br />

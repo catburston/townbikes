@@ -11,8 +11,8 @@ end
 BICYCLES = 50
 
 manufacturers = ['Rivendell', 'Raleigh', 'Peugeot', 'gazelle', 'pedersen']
-bicycle_types = ['dutch - ladies', 'bakfiets', 'commuter', 'racer', 'MTB']
-bicycle_properties = {"helmet"=>"0", "trailer"=>"0", "child_seat"=>"0", "rear_basket"=>"0", "front_basket"=>"0", "internal_gears"=>"0"}
+bicycle_types = ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "tandem", "time-trial", "touring", "tricycle", "unicycle"]
+bicycle_properties = {"ladies"=>"0","helmet"=>"1", "front_basket"=>"1", "rear_basket"=>"0", "trailer"=>"0", "internal_gears"=>"0", "child_seat"=>"0", "kickstand"=>"0", "safety_vest"=>"0", "panniers"=>"0", "rack"=>"0", "fenders"=>"0", "lock"=>"1", "skirt_guard"=>"0", "pump"=>"0", "toolkit"=>"0"}
 sizes = [47, 52, 58, 60, 63, 66, 70]
 status = ['pending', 'approved', 'rejected']
 images = ['20111112 Bike light bracket 242_resized.jpg', '20120825-Amsterdam-038.png', '20140118-Amsterdam-095.png', '20111112-Bike-light-bracket-242_resized.png', '20120825-Amsterdam-064.png', '20140228-Antwerpen-046.png', '20120204-Rivendells-141_resized.png', '20120825-Amsterdam-121.png', 'IMG_2775.png', '20120211-Eastern-suburbs-ride-029_resized.png', '20120825-Amsterdam-123.png', 'IMG_3251.png', '20120211-Eastern-suburbs-ride-031_resized.png', '20120825-Amsterdam-131.png', '_DSC6749.png', '20120219-Rivendells-012_resized.png', '20130801-Mosel-Valley-014.png', '_DSC6754.png', '20120219-Rivendells-019_resized.png', '20130801-Mosel-Valley-014a.png']
@@ -63,7 +63,7 @@ Location.create!(latitude: 55.6876485, longitude: 12.5574056, city: "Copenhagen"
 Location.create!(latitude: 55.674112, longitude: 12.597563, city: "Copenhagen", country: "Denmark", street_name: "Pusher Street", result: "Pusher Street, 1440 Copenhagen, Denmark", user_id: (u.id+5))
 
 Location.create!(latitude: 41.382271, longitude: 2.175687, city: "Barcelona", country: "Spain", street_name: "Carrer de l'Arc de Sant Ramon del Call, 4", result: "Carrer de l'Arc de Sant Ramon del Call, 4, 08002 Barcelona", user_id: (u.id+6))
-Location.create!(latitude: 52.5271218, longitude: 13.3983097, city: "Barcelona", country: "Spain", street_name: "Passatge Sert, 57", result: "Passatge Sert, 57, 08003 Barcelona, Spain", user_id: (u.id+7))
+Location.create!(latitude: 41.3892182, longitude: 2.1771937, city: "Barcelona", country: "Spain", street_name: "Passatge Sert, 57", result: "Passatge Sert 57, 08003 Barcelona, Spain", user_id: (u.id+7))
 
 Location.create!(latitude: 52.5207638, longitude: 13.3913145, city: "Berlin", country: "Germany", street_name: "Grosse Hamburger Strasse 42", result: "Grosse Hamburger Strasse 42, 10115 Berlin, Germany", user_id: (u.id+8))
 Location.create!(latitude: 52.51862, longitude: 13.376187, city: "Berlin", country: "Germany", street_name: "Platz der Republik 1", result: "Platz der Republik 1, 11011 Berlin, Germany", user_id: (u.id+9))

@@ -1,0 +1,173 @@
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+    <li> <%= error.message %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [ current_user, @bicycle ] do |f| %>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Manufacturer
+        <%= f.text_field :manufacturer %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Bicycle Type
+      <%= select(:bicycle, :bicycle_type, ["bakfiets", "BMX", "cyclocross", "dutch-style", "folding", "freight", "hybrid", "MTB", "pedersen", "penny-farthing", "racing", "randonneur", "recumbent", "road", "tandem", "time-trial", "touring", "tricycle", "unicycle"]) %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Bicycle size <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span>
+      <%= f.number_field :size %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Bicycle Features</label>
+      <ul class="small-block-grid-4">
+       <%= f.fields_for :properties do |p| %>
+       <li class="panel">
+         <h4><small><%= :ladies.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :ladies %>
+           <%= p.label :ladies %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :helmet.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :helmet %>
+           <%= p.label :helmet %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :front_basket.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :front_basket %>
+           <%= p.label :front_basket %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :child_seat.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :child_seat %>
+           <%= p.label :child_seat %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :rear_basket.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :rear_basket %>
+           <%= p.label :rear_basket %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :trailer.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :trailer %>
+           <%= p.label :trailer %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :internal_gears.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :internal_gears %>
+           <%= p.label :internal_gears %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :kickstand.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :kickstand %>
+           <%= p.label :kickstand %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :safety_vest.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :safety_vest %>
+           <%= p.label :safety_vest %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :panniers.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :panniers %>
+           <%= p.label :panniers %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :rack.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :rack %>
+           <%= p.label :rack %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :fenders.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :fenders %>
+           <%= p.label :fenders %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :lock.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :lock %>
+           <%= p.label :lock %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :skirt_guard.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :skirt_guard %>
+           <%= p.label :skirt_guard %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :pump.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :pump %>
+           <%= p.label :pump %>
+         </div>
+       </li>
+       <li class="panel">
+         <h4><small><%= :toolkit.capitalize %></small></h4>
+         <div class="switch">
+           <%= p.check_box :toolkit %>
+           <%= p.label :toolkit %>
+         </div>
+       </li>
+       <% end %>
+      </ul>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Daily Cost
+        <%= f.number_field :daily_cost %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Upload a Photo
+        <%= f.file_field :photo %>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Save", class: "button" %>
+    </div>
+  </div>
+<% end %>

@@ -2,44 +2,57 @@
   <div class="large-12 columns">
     <h1>Bicycles</h1>
     <ul class="small-block-grid-2">
-      <% @bicycles.each do |bicycle| %>
-        <li>
-          <div class="panel callout radius">
-            <div class="row">
-              <div class="large-12 columns">
-                <div class="row collapse prefix-radius">
-                  <div class="small-7 columns">
-                    <ul class="no-bullet">
-                      <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}".capitalize, bicycle_path(bicycle.id) %></h5></li>
-                      <li>Size: <%= bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span></li>
-                      <li>Cost per day: €<%= bicycle.daily_cost %></li>
-                      <li>Properties: <%= bicycle.properties %></li>
-                      <li>Owner: <%= bicycle.user.first_name.capitalize if bicycle.user.first_name.present? %> <%= bicycle.user.last_name.capitalize if bicycle.user.last_name.present? %> <%= link_to bicycle.user.email %></li>
-                    </ul>
-                  </div>
-                  <div class="small-5 columns">
-                    <ul class="no-bullet">
-                      <% if bicycle.photo? %>
-                        <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
-                      <% else %>
-                        <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
-                      <% end %>
-                      <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
-                      <% if user_signed_in? && bicycle.user == current_user %>
-                        <li><%= link_to "Edit", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get', class: "button" %></li>
+      <% if current_user.location == nil %>
+        <%= link_to 'List a bicycle', new_user_location_path(current_user.id), class: "button" %>
+      <% elsif @bicycles.size == 0 %>
+        <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id), class: "button" %>
+      <% else %>
+        <% @bicycles.each do |bicycle| %>
+          <li>
+            <div class="panel callout radius">
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="row collapse prefix-radius">
+                    <div class="small-7 columns">
+                      <ul class="no-bullet">
+                        <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}".capitalize, bicycle_path(bicycle.id) %></h5></li>
+                        <li>Size: <%= bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span></li>
+                        <li>Cost per day: €<%= bicycle.daily_cost %></li>
+                        <li>Properties: </li>
                         <li>
-                          <%= link_to reservations_path(:bicycle_id => bicycle.id), class: "button" do %>
-                            Reservations (<%= bicycle.reservations.count %>)
-                          <% end %>
+                            <% bicycle.properties.each do |key, value| %>
+                              <% if value =="1" %>
+                                <span class="label property"><%= key %></span>
+                              <% end %>
+                            <% end %>
                         </li>
-                      <% end %>
-                    </ul>
+                        <li>Owner: <%= bicycle.user.first_name.capitalize if bicycle.user.first_name.present? %> <%= bicycle.user.last_name.capitalize if bicycle.user.last_name.present? %> <%= link_to bicycle.user.email %></li>
+                      </ul>
+                    </div>
+                    <div class="small-5 columns">
+                      <ul class="no-bullet">
+                        <% if bicycle.photo? %>
+                          <li class="th"><%= image_tag(bicycle.photo_url(:thumb)) %></li>
+                        <% else %>
+                          <li class="th"><%= image_tag("/assets/images/tandem-thumb.png") %></li>
+                        <% end %>
+                        <li><%= link_to "View details", bicycle_path(bicycle.id), class: "button" %></li>
+                        <% if user_signed_in? && bicycle.user == current_user %>
+                          <li><%= link_to "Edit", edit_user_bicycle_path(bicycle.user_id, bicycle.id), method: 'get', class: "button" %></li>
+                          <li>
+                            <%= link_to reservations_path(:bicycle_id => bicycle.id), class: "button" do %>
+                              Reservations (<%= bicycle.reservations.count %>)
+                            <% end %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

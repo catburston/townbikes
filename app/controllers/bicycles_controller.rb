@@ -12,6 +12,7 @@ class BicyclesController < ApplicationController
 
   def show
     @bicycle = Bicycle.find(params[:id])
+    @properties_hash = @bicycle.properties.select { |key, val| val == "1" }
   end
 
   def new
@@ -61,7 +62,7 @@ class BicyclesController < ApplicationController
   private
 
   def bicycle_params
-    params.require(:bicycle).permit(:manufacturer, :bicycle_type, :size, :daily_cost, :description, :photo, :properties => [:helmet, :front_basket, :rear_basket, :trailer, :internal_gears, :child_seat])
+    params.require(:bicycle).permit(:manufacturer, :bicycle_type, :size, :daily_cost, :description, :photo, :properties => [:ladies, :helmet, :front_basket, :rear_basket, :trailer, :internal_gears, :child_seat, :kickstand, :safety_vest, :panniers, :rack, :fenders, :lock, :skirt_guard, :pump, :toolkit])
   end
 
   def filtering_params(params)

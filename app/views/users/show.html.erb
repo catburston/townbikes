@@ -17,7 +17,9 @@
       <h4>Location: <%= link_to "Add my location", new_user_location_path(current_user.id) %></h4>
     <% end %>
 
-    <% if @bicycles.size == 0 %>
+    <% if current_user.location == nil %>
+      <%= link_to 'List a bicycle', new_user_location_path(current_user.id), class: "button" %>
+    <% elsif @bicycles.size == 0 %>
       <%= link_to 'List a bicycle', new_user_bicycle_path(current_user.id), class: "button" %>
     <% else %>
       <ul class="small-block-grid-2">

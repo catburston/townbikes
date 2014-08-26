@@ -1484,4 +1484,6 @@ footer a { color: $secondary-color; }
 .tabs.vertical { width: 30%; max-width: 30%; }
 .tabs-content.vertical { width: 70%; max-width: 70%; }
 
+span.tooltip { opacity: 1 !important; }
+
 @import 'foundation';

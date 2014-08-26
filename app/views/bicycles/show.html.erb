@@ -16,12 +16,12 @@
   </div>
   <div class="large-4 columns">
     <ul class="no-bullet">
-      <li><h5>(<%= @bicycle.id %>) <%= @bicycle.manufacturer %> <%= @bicycle.bicycle_type %></h5></li>
-      <li>Size: <%= @bicycle.size %></li>
-      <li>Cost per day: <%= @bicycle.daily_cost %></li>
+      <li><h5><%= @bicycle.manufacturer.capitalize %> <%= @bicycle.bicycle_type.capitalize %></li>
+      <li>Size: <%= @bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube."><i class="fi-alert"></i></span></li>
+      <li>Cost per day: €<%= @bicycle.daily_cost %></li>
       <li>Properties: <%= @bicycle.properties %></li>
       <li>Description: <%= @bicycle.description %></li>
-      <li>Bicycle Owner: <%= link_to "#{@bicycle.user.first_name} #{@bicycle.user.last_name}", user_path(@bicycle.user.id) %> (<%= @bicycle.user.id %>)</li>
+      <li>Bicycle owner: <%= @bicycle.user.first_name.capitalize if @bicycle.user.first_name.present? %> <%= @bicycle.user.last_name.capitalize if @bicycle.user.last_name.present? %> <%= link_to @bicycle.user.email %></li>
       <li>Location: <%= @bicycle.location.city %></li>
       <li>
         <% if current_user == @bicycle.user %>

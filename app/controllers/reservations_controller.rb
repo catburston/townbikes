@@ -31,7 +31,7 @@ class ReservationsController < ApplicationController
       NewReservationMailer.new_reservation_mail(@reservation.owner, @reservation).deliver
       redirect_to reservation_path(@reservation.id), notice: 'Reservation was sent to the bicycle owner for approval'
     else
-      render 'new', :bicycle_id => @bicycle.id, notice: "The dates selected are not available"
+      redirect_to new_reservation_path(reservation: { bicycle_id: @bicycle.id } ), notice: "The dates selected are not available"
     end
   end
 

@@ -45,9 +45,9 @@ describe ReservationsController do
       it "does not save the new reservation in the database" do
         expect{ post :create, user_id: @renter.id, reservation: FactoryGirl.attributes_for(:reservation, from_date: nil, bicycle_id: @bicycle.id) }.to_not change(Reservation,:count)
       end
-      it "re-renders the :new reservation template" do
+      it "redirect the :new reservation template" do
         post :create, user_id: @renter.id, reservation: FactoryGirl.attributes_for(:reservation, from_date: nil, bicycle_id: @bicycle.id)
-        response.should render_template :new
+        response.should redirect_to new_reservation_path(reservation: { bicycle_id: @bicycle.id } )
       end
     end
   end

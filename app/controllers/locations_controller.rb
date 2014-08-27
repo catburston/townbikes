@@ -7,6 +7,7 @@ class LocationsController < ApplicationController
       @locations = Location.where(:user_id => params[:user_id])
     elsif params[:search]
       @locations = Location.search(params[:search])
+      @locations  = @locations.where.not(user_id: current_user.id) if current_user.present?
     else
       @locations = Location.all
     end

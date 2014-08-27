@@ -20,11 +20,11 @@
                         <li>Cost per day: €<%= bicycle.daily_cost %></li>
                         <li>Properties: </li>
                         <li>
-                            <% bicycle.properties.each do |key, value| %>
-                              <% if value =="1" %>
-                                <span class="label property"><%= key %></span>
-                              <% end %>
+                          <% bicycle.properties.each do |key, value| %>
+                            <% if value =="1" %>
+                              <span class="label property"><%= key %></span>
                             <% end %>
+                          <% end %>
                         </li>
                         <li>Owner: <%= bicycle.user.first_name.capitalize if bicycle.user.first_name.present? %> <%= bicycle.user.last_name.capitalize if bicycle.user.last_name.present? %> <%= link_to bicycle.user.email %></li>
                       </ul>

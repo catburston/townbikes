@@ -17,7 +17,7 @@
       </dl>
     </div>
     <ul class="small-block-grid-2">
-      <% @user_reservations.each do |reservation| %>
+      <% @user_reservations.order("from_date asc").each do |reservation| %>
         <li>
           <div class="panel callout radius">
             <div class="row">

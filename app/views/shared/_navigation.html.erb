@@ -28,14 +28,14 @@
             <li>
               <% if pending_count > 0 %>
                 <span class="pending-notification" data-tooltip aria-haspopup="true" title="You have <%= pending_count %> pending reservations on your bicycles">
-                  <%= link_to raw("<i class='fi-info size-20'></i>"), reservations_path({status: "pending", bicycle: "owner"}) %></i>
+                  <%= link_to raw("<i class='fi-info size-20'></i>"), reservations_path({status: "pending", owner: "owner"}) %></i>
                 </span>
               <% end %>
             </li>
             <li>
               <% if upcoming_count > 0 %>
                 <span class="upcoming-notification" data-tooltip aria-haspopup="true" title="You have <%= upcoming_count %> upcoming bicycle reservations in the next week">
-                  <%= link_to raw("<i class='fi-flag size-20'></i>"), reservations_path({status: "approved", bicycle: "renter"}) %></i>
+                  <%= link_to raw("<i class='fi-flag size-20'></i>"), reservations_path({status: "approved", renter: "renter"}) %></i>
                 </span>
               <% end %>
             </li>

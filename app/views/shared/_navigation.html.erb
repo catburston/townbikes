@@ -32,9 +32,16 @@
                 </span>
               <% end %>
             </li>
+            <li>
+              <% if upcoming_count > 0 %>
+                <span class="upcoming-notification" data-tooltip aria-haspopup="true" title="You have <%= upcoming_count %> upcoming bicycle reservations in the next week">
+                  <%= link_to raw("<i class='fi-flag'></i>"), reservations_path({status: "approved", bicycle: "renter"}) %></i>
+                </span>
+              <% end %>
+            </li>
             <li class="has-dropdown">
               <a href="#">
-                <%= current_user.first_name || current_user.email %>
+                <%= current_user.first_name || current_user.email %>  <i class="fi-torso-female user-account"></i>
               </a>
               <ul class="dropdown">
                 <li><%= link_to 'Reservations', reservations_path %></li>

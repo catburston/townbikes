@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users do
-   get 'user', :to => 'users#show'
+    get 'user', :to => 'users#show'
   end
   # devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

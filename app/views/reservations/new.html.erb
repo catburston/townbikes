@@ -17,7 +17,12 @@
           <li><h5>(<%= @bicycle.id %>) <%= @bicycle.manufacturer %> <%= @bicycle.bicycle_type %></h5></li>
           <li>Size <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span>: <%= @bicycle.size %></li>
           <li>Cost per day: <%= @bicycle.daily_cost %></li>
-          <li>Properties: <%= @bicycle.properties %></li>
+          <li>Properties:</li>
+          <li>
+            <% @properties_hash.each_key do |key| %>
+              <span class="label property"><%= key %></span>
+            <% end %>
+          </li>
           <li>Description: <%= @bicycle.description %></li>
           <li>Bicycle Owner: <%= link_to "#{@bicycle.user.first_name} #{@bicycle.user.last_name}", user_path(@bicycle.user.id) %> (<%= @bicycle.user.id %>)</li>
           <li>Location: <%= @bicycle.location.city %></li>

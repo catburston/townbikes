@@ -14,7 +14,7 @@ class Reservation < ActiveRecord::Base
   validate :from_date_is_in_future
   validate :from_date_before_to_date
 
-  validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Some validation title", :message_content => "Some validation message", :exclude_edges => ["from_date", "to_date"]}, :on => :create
+  validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Reservation dates not possible", :message_content => "Your reservation dates could not be submitted. This bicycle is already booked on those dates.", :exclude_edges => ["from_date", "to_date"]}, :on => :create
 
   #custom ActiveRecord validations
   def owner
@@ -25,6 +25,12 @@ class Reservation < ActiveRecord::Base
     pending_reservations = Reservation.where(:bicycle_id => User.find(uid).bicycles.ids, status: 'pending')
     pending_count = pending_reservations.count
     pending_count
+  end
+
+  def self.has_upcoming(uid)
+    upcoming_reservations = Reservation.where(from_date: (Time.now.midnight)..(Time.now.midnight + 1.week), status: 'approved')
+    upcoming_count = upcoming_reservations.count
+    upcoming_count
   end
 
   private

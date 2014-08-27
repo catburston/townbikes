@@ -1487,7 +1487,9 @@ footer a { color: $secondary-color; }
 // ** tooltip styles
 span.tooltip { opacity: 1 !important; }
 
-// ** pending notifications style
+// ** notifications style
 .pending-notification a, .pending-notification a:hover { color: $warning-color; font-size: 20px }
+.upcoming-notification a, .upcoming-notification a:hover { color: $success-color; font-size: 20px }
+.user-account { font-size: 20px; }
 
 @import 'foundation';

@@ -36,17 +36,19 @@ class ReservationsController < ApplicationController
   def new
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
     @bicycle.reservations.build
+    @properties_hash = @bicycle.properties.select { |key, val| val == "1" }
     @reservation = Reservation.new
   end
 
   def create
     @bicycle = Bicycle.find(reservation_params[:bicycle_id])
+    @properties_hash = @bicycle.properties.select { |key, val| val == "1" }
     @reservation = Reservation.new( reservation_params )
     if @bicycle.user != current_user && @reservation.save
       NewReservationMailer.new_reservation_mail(@reservation.owner, @reservation).deliver
       redirect_to reservation_path(@reservation.id), notice: 'Reservation was sent to the bicycle owner for approval'
     else
-      render :new, :bicycle_id => @bicycle.id, notice: "The dates selected are not available"
+      render 'new', :bicycle_id => @bicycle.id, notice: "The dates selected are not available"
     end
   end
 

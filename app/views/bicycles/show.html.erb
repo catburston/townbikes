@@ -35,7 +35,7 @@
             <% end %>
             <%= link_to "Edit", edit_user_bicycle_path(@bicycle.user_id, @bicycle.id), method: 'get', class: "button" %>
         <% else %>
-            <%= link_to 'Reserve', new_reservation_path(reservation: { bicycle_id: @bicycle.id} ), class: "button" %>
+            <%= link_to 'Reserve', new_reservation_path(reservation: { bicycle_id: @bicycle.id } ), class: "button" %>
         <% end %>
       </li>
     </ul>

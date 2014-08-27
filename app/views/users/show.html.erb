@@ -32,13 +32,13 @@
                     <div class="small-7 columns">
                       <ul class="no-bullet">
                         <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}  ID: #{bicycle.id}", bicycle_path(bicycle.id) %></h5></li>
-                        <li>Size: <%= bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info"></i></span></li>
+                        <li>Size: <%= bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><img src='/assets/images/ST-measurement.png' />"><i class="fi-info size-20"></i></span></li>
                         <li>Cost per day: <%= bicycle.daily_cost %></li>
                         <li>Properties:</li>
                           <li>
                             <% bicycle.properties.each do |key, value| %>
                               <% if value =="1" %>
-                                <span class="label property"><%= key %></span>
+                                <span class="label property"><i class="fi-price-tag size-16"></i> <%= key %></span>
                               <% end %>
                             <% end %>
                           </li>

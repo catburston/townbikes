@@ -2,31 +2,14 @@ class ReservationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    if params[:bicycle] == "renter"
-      if params[:status].present?
-        @user_reservations = Reservation.where(:user_id => current_user.id)
-        @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
-      elsif params[:expired].present?
-        @user_reservations = Reservation.where(:user_id => current_user.id)
-        @user_reservations = @user_reservations.select { |reservation| reservation.to_date <= Date.today }
-      else
-        @user_reservations = Reservation.where(:user_id => current_user.id)
-      end
-    elsif params[:bicycle] == "owner"
-      if params[:status].present?
-        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
-        @user_reservations = @user_reservations.select { |reservation| reservation.status == params[:status] }
-      elsif params[:expired].present?
-        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
-        @user_reservations = @user_reservations.select { |reservation| reservation.to_date <= Date.today }
-      else
-        @user_reservations = Reservation.where(:bicycle_id => current_user.bicycles.ids)
-      end
-    elsif params[:bicycle_id].present?
-      @user_reservations = Reservation.where(bicycle_id: params[:bicycle_id])
-    else
-      @user_reservations = Reservation.where(:user_id => current_user.id)
-    end
+    scope = Reservation.for_user(current_user) # ensure that a user can only access his reservations
+    scope = scope.where(status: index_params[:status]) if index_params[:status]
+    scope = scope.where(user_id: current_user.id) if index_params[:renter]
+    scope = scope.where(bicycle_id: current_user.bicycles.ids) if index_params[:owner]
+    scope = scope.where(bicycle_id: index_params[:bicycle_id]) if index_params[:bicycle_id]
+    scope = scope.where("to_date < ?", Date.today) if index_params[:expired]
+
+    @user_reservations = scope
   end
 
   def show
@@ -75,5 +58,9 @@ class ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :bicycle_id, :from_date, :to_date, :status )
+  end
+
+  def index_params
+    params.permit(:status, :bicycle, :renter, :owner, :expired)
   end
 end

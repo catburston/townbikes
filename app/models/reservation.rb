@@ -16,6 +16,9 @@ class Reservation < ActiveRecord::Base
 
   validates :from_date, :to_date, :overlap => {:scope => "bicycle_id", :message_title => "Reservation dates not possible", :message_content => "Your reservation dates could not be submitted. This bicycle is already booked on those dates.", :exclude_edges => ["from_date", "to_date"]}, :on => :create
 
+  scope :for_user, -> (user) { where("user_id = ? OR bicycle_id IN (?)", user.id, user.bicycles.ids) }
+
+
   #custom ActiveRecord validations
   def owner
     bicycle.user

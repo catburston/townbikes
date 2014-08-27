@@ -28,6 +28,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :pending_count
 
+  def upcoming_count
+    Reservation.where(from_date: (Time.now.midnight)..(Time.now.midnight + 1.week), status: 'approved', user_id: current_user.id).count
+  end
+  helper_method :upcoming_count
+
   protected
 
     def configure_permitted_parameters

@@ -28,13 +28,20 @@
             <li>
               <% if pending_count > 0 %>
                 <span class="pending-notification" data-tooltip aria-haspopup="true" title="You have <%= pending_count %> pending reservations on your bicycles">
-                  <%= link_to raw("<i class='fi-info'></i>"), reservations_path({status: "pending", bicycle: "owner"}) %></i>
+                  <%= link_to raw("<i class='fi-info size-20'></i>"), reservations_path({status: "pending", owner: "owner"}) %></i>
+                </span>
+              <% end %>
+            </li>
+            <li>
+              <% if upcoming_count > 0 %>
+                <span class="upcoming-notification" data-tooltip aria-haspopup="true" title="You have <%= upcoming_count %> upcoming bicycle reservations in the next week">
+                  <%= link_to raw("<i class='fi-flag size-20'></i>"), reservations_path({status: "approved", renter: "renter"}) %></i>
                 </span>
               <% end %>
             </li>
             <li class="has-dropdown">
               <a href="#">
-                <%= current_user.first_name || current_user.email %>
+                <%= current_user.first_name || current_user.email %>  <i class="fi-torso-female  size-14"></i>
               </a>
               <ul class="dropdown">
                 <li><%= link_to 'Reservations', reservations_path %></li>
@@ -65,7 +72,7 @@
     <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
       <ul class="title-area">
           <li class="name">
-            <h1><%= link_to 'townbik.es', root_path %></h1>
+            <h1><%= link_to 'townbikes', root_path %></h1>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
           <li class="toggle-topbar menu-icon"><%= link_to '<span></span>', root_path %></li>
@@ -75,7 +82,7 @@
           <!-- Right Nav Section -->
           <ul class="right">
             <li class="active"><%= link_to 'List a Bicycle', new_user_registration_path %></li>
-            <li><%= link_to 'Login', '#', :data => { :"reveal-id" => "loginModal" }  %></li>
+            <li><%= link_to 'Log in', '#', :data => { :"reveal-id" => "loginModal" }  %></li>
             <li><%= link_to 'Sign up', '#', :data => { :"reveal-id" => "signupModal" } %></li>
           </ul>
 

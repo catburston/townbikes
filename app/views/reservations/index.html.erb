@@ -4,20 +4,20 @@
     <div class="panel">
       <dl class="sub-nav reservation-type">
       <dt>Reservation type:</dt>
-        <dd><%= link_to 'Reservations as bicycle renter', reservations_path({bicycle: "renter"}) %></dd>
-        <dd><%= link_to 'Reservations as bicycle owner', reservations_path({bicycle: "owner"}) %></dd>
+        <dd><%= link_to 'Reservations as bicycle renter', reservations_path(params.merge(renter: "renter").except(:owner)) %></dd>
+        <dd><%= link_to 'Reservations as bicycle owner', reservations_path(params.merge(owner: "owner").except(:renter)) %></dd>
       </dl>
       <dl class="sub-nav reservation-status">
         <dt>Status:</dt>
-        <dd><%= link_to 'All', reservations_path %></dd>
-        <dd><%= link_to 'Approved', reservations_path({status: "approved", bicycle: params[:bicycle]}) %></dd>
-        <dd><%= link_to 'Pending', reservations_path({status: "pending", bicycle: params[:bicycle]}) %></dd>
-        <dd><%= link_to 'Rejected', reservations_path({status: "rejected", bicycle: params[:bicycle]}) %></dd>
-        <dd><%= link_to 'Expired', reservations_path({expired: "expired", bicycle: params[:bicycle]}) %></dd>
+        <!-- <dd><%= link_to 'All', reservations_path %></dd> -->
+        <dd><%= link_to 'Approved', reservations_path(params.merge(status: "approved").except(:expired)) %></dd>
+        <dd><%= link_to 'Pending', reservations_path(params.merge(status: "pending").except(:expired)) %></dd>
+        <dd><%= link_to 'Rejected', reservations_path(params.merge(status: "rejected").except(:expired)) %></dd>
+        <dd><%= link_to 'Expired', reservations_path(params.merge(expired: "expired").except(:status)) %></dd>
       </dl>
     </div>
     <ul class="small-block-grid-2">
-      <% @user_reservations.each do |reservation| %>
+      <% @user_reservations.order("from_date asc").each do |reservation| %>
         <li>
           <div class="panel callout radius">
             <div class="row">

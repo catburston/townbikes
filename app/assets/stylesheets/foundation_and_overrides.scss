@@ -137,7 +137,7 @@ $warning-color: #f08a24;
 $steel       : #666666;
 // $charcoal    : #555555;
 $tuatara     : #444444;
-// $oil         : #333333;
+$oil         : #333333;
 // $jet         : #222222;
 // $black       : #000000;
 
@@ -1487,7 +1487,8 @@ footer a { color: $secondary-color; }
 // ** tooltip styles
 span.tooltip { opacity: 1 !important; }
 
-// ** pending notifications style
-.pending-notification a, .pending-notification a:hover { color: $warning-color; font-size: 20px }
+// ** notifications style
+.pending-notification a, .pending-notification a:hover { color: $warning-color; }
+.upcoming-notification a, .upcoming-notification a:hover { color: $success-color; }
 
 @import 'foundation';

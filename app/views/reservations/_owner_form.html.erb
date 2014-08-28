@@ -23,9 +23,7 @@
   </div>
   <div class="row">
     <div class="large-8 columns">
-      <p>@reservation.owner: <%= @reservation.owner.id %> <%= @reservation.owner.first_name %></p>
-      <p>@reservation.renter: <%= @reservation.renter.id %> <%= @reservation.renter.first_name %></p>
-      <p>current_user: <%= current_user.id %> <%= @current_user.first_name %></p>
+      <p>Renter: <%= @reservation.renter.first_name.capitalize %> (<%= link_to @reservation.renter.email %>)</p>
     </div>
   </div>
   <div class="row">

@@ -1491,4 +1491,8 @@ span.tooltip { opacity: 1 !important; }
 .pending-notification a, .pending-notification a:hover { color: $warning-color; }
 .upcoming-notification a, .upcoming-notification a:hover { color: $success-color; }
 
+// ** logo in header
+.title-area .name { width: 250px; }
+.top-bar .title-area .name h1 a { background: url('images/townbikes-logo-white.png') no-repeat right; color: transparent}
+
 @import 'foundation';

@@ -16,7 +16,11 @@
                     <div class="small-7 columns">
                       <ul class="no-bullet">
                         <li><h5><%= link_to "#{bicycle.manufacturer} #{bicycle.bicycle_type}".capitalize, bicycle_path(bicycle.id) %></h5></li>
-                        <li>Size: <%= bicycle.size %> <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><%= image_tag('/assets/images/ST-measurement.png') %>"><i class="fi-info size-20"></i></span></li>
+                        <li>Size: <%= bicycle.size %> 
+                          <span data-tooltip aria-haspopup="true" title="The size of a bike is the measurement in cm from the center of the bottom bracket to the very top of the seat tube.<br /><a href='/assets/images/ST-measurement.png' />">
+                            <i class="fi-info size-20"></i>
+                          </span>
+                        </li>
                         <li>Cost per day: €<%= bicycle.daily_cost %></li>
                         <li>Properties: </li>
                         <li>

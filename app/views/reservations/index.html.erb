@@ -57,3 +57,26 @@
     </ul>
   </div>
 </div>
+
+<script>
+$(function () {
+    setNavigation();
+});
+
+function setNavigation() {
+  $(".reservation-type a").each(function() {
+    var path = window.location.href;
+    var nav_url = this
+    if (this == path) {
+        $(this).closest('dd').addClass("active");
+    }
+  });
+  $(".reservation-status a").each(function() {
+    var path = window.location.href;
+    var nav_url = this
+    if (this == path) {
+        $(this).closest('dd').addClass("active");
+    }
+  });
+}
+</script>
